@@ -1,0 +1,9 @@
+sun			Sunny			Done
+sun_cloud		Sunny with clouds	Done
+sun_cloud_rain		Sunny with rain		Done
+cloud			Cloudy			Done
+cloud_cloud		Very cloudy		
+cloud_rain		Cloudy with rain
+cloud_lightning		Stormy
+cloud_snow		Snowing
+cloud_wind		Windy

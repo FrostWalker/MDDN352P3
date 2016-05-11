@@ -1,0 +1,233 @@
+/* Extra small devices (phones, less than 768px) */
+
+body {
+    color: #454545;
+    background-color: #77DD77;
+}
+
+div {
+    font-family: 'Raleway', sans-serif;
+}
+
+/* Header section */
+.day {
+    padding: 20px 0;
+    
+    background-color: #77DD77;
+}
+
+.day img {
+    max-width: 100%;
+}
+
+.dayOfWeek {
+    display: block;
+    margin-bottom: -20px;
+    font-size: 6.5vw;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.high, .low {
+    font-size: 20vw; /* 5em */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}
+
+.high {
+    color: tomato;
+}
+
+.low {
+    color: cadetblue;
+}
+
+.tempLabel {
+    display: block;
+    margin-top: -5vw;
+    font-size: 4vw;
+}
+
+#status {
+    margin: 10px 0 0 0;
+    font-size: 5vw;
+}
+
+/* Features (coloured background) */
+#chat {
+    padding-top: 10px;
+    max-height: 250px;
+    overflow: scroll;
+}
+
+#chat::-webkit-scrollbar { 
+    display: none; 
+}
+
+/* Speech */
+.speech {
+    display: block;
+    clear: both;
+    max-width: 80%;
+    margin-bottom: 10px;
+    
+    padding: 7px 14px;
+    border-radius: 20px;
+    
+    font-size: 1.3em;
+}
+
+.feature .speech:first-child {
+    margin-top: 20px;
+}
+
+.feature .speech:last-child {
+    margin-bottom: 20px;
+}
+
+.photo .speech:first-child {
+    margin-top: 200px;
+}
+
+/* Speech to Weather Lad */
+.to {
+    float: right;
+    background-color: #FDFD96;
+}
+
+/* Speech from Weather Lad */
+.from {
+    float: left;
+    color: white;
+    background-color: #FF6961;
+}
+
+/* Say something */
+#saySomething {
+    margin-top: 10px;
+}
+
+.say {
+    float: none;
+    max-width: none;
+    background-color: #a2ff85;
+}
+
+.say input {
+    background-color: inherit;
+    border-width: 0;
+    border: none;
+    width: 100%;
+    box-shadow: 0;
+}
+
+.say input:focus {
+    outline: none;
+}
+
+#endOfMessages {
+    display: none;
+}
+
+footer {
+    min-height: 80px;
+    padding: 30px;
+}
+
+/* Lightbox styles */
+#popupBlack {
+    display: block;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index: 1001;
+    opacity: .60;
+}
+.popup {
+    display: none;
+    position: absolute;
+    top: 10%;
+    left: 20%;
+    width: 60%;
+    padding: 16px;
+    border-radius: 10px;
+    background-color: #77DD77;
+    z-index: 1002;
+    overflow: auto;
+    text-align: center;
+    font-size: 5vw;
+}
+.popup img {
+    display: block;
+    max-width: 20vw;
+    max-height: 20vw;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+#popupLoading {
+    display: block;
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .day img {
+        max-width: 140%;
+    }
+
+    .dayOfWeek {
+        font-size: 1.9em;
+        margin-bottom: -10px;
+    }
+
+    .high, .low {
+        font-size: 3.5em;
+    }
+
+    .tempLabel {
+        margin-top: -15px;
+        font-size: 0.8em;
+    }
+    
+    #status {
+        font-size: 1.8em;
+    }
+    
+    #chat {
+        max-height: 450px;
+    }
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .day img {
+        max-width: 120%;
+    }
+
+    .dayOfWeek {
+        font-size: 2.2em;
+        margin-bottom: -10px;
+    }
+
+    .high, .low {
+        font-size: 4em;
+    }
+
+    .tempLabel {
+        margin-top: -15px;
+        font-size: 1em;
+    }
+    
+    #status {
+        font-size: 1.8em;
+    }
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .day img {
+        max-width: 130%;
+    }
+}
