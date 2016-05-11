@@ -63,6 +63,15 @@ div {
     display: none; 
 }
 
+/* Text input at bottom of page */
+#input {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #77DD77;
+}
+
 /* Speech */
 .speech {
     display: block;
