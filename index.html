@@ -39,7 +39,7 @@
 
     <body>
         <div id="background_container">
-            <div id="background1"></div>
+            <div id="background"></div>
         </div>
         
         <canvas width="1" height="1" id="weather_canvas" data-weather="storm" data-frequency="2000" data-angle="90" data-speed="100"></canvas>
@@ -437,16 +437,22 @@
                     timeout: 5000
                 });
                 
-                // Update the background image
-                //$api_key = '3e5954b4fbe5a56d910af5d2a01a92c5';
-
-                // https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=api_key&lat=lat&lon=lon&radius=32&geo_context=2&per_page=500&format=json&nojsoncallback=1';
+                // Update the background image'
+                var flickrUrl = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key='+ flickrApiKey + '&lat=' + lat + '&lon=' + long + '&radius=32&geo_context=2&per_page=500&format=json&nojsoncallback=1';
                 $.ajax({
-                    url: url,
+                    url: flickrUrl,
                     type: 'GET',
                     success: function (response) {
-                        // Get the image
+                        var item = Math.round(Math.random() * 60);
+                        var photoData = response.photos.photo[item];
+                        var farm = response.photos.photo[item].farm;
+                        var server = response.photos.photo[item].server;
+                        var id = response.photos.photo[item].id;
+                        var secret = response.photos.photo[item].secret;
                         
+                        var imageUrl = 'http://farm' + farm + '.staticflickr.com/' + server + '/' + id + '_' + secret + '_b.jpg';
+                                                
+                        $('#background').css('background-image', 'url(' + imageUrl + ')');
                     },
                     timeout: 5000
                 });
@@ -475,25 +481,25 @@
                 if (s) vars = statusVars;
                 
                 var status = [];
-                status.push(random(vars[0])); // Looks like it's
+                status.push(randomItem(vars[0])); // Looks like it's
                 status.push(day['description']); // cloudy
-                status.push(random(vars[1])); // in
+                status.push(randomItem(vars[1])); // in
                 status.push(city); // Wellington.
-                if (s) status.push(random(vars[2])+'.'); // today.
+                if (s) status.push(randomItem(vars[2])+'.'); // today.
                 if (!s) {
                     status.push('on ' + day['day']+'.');
                 } 
-                status.push(random(vars[3])); // With a high of
+                status.push(randomItem(vars[3])); // With a high of
                 status.push(day['high']);
-                status.push(random(vars[4])); // and a low of
+                status.push(randomItem(vars[4])); // and a low of
                 status.push(day['low']+'.');
 
                 if (day['high'] > 22) {
-                    status.push(random(tempVars[0])); // Good day for the beach.
+                    status.push(randomItem(tempVars[0])); // Good day for the beach.
                 } else if (day['high'] > 17) {
-                    status.push(random(tempVars[1])); // Could be warmer.
+                    status.push(randomItem(tempVars[1])); // Could be warmer.
                 } else {
-                    status.push(random(tempVars[2])); // Layer up!
+                    status.push(randomItem(tempVars[2])); // Layer up!
                 }
                 
                 status = status.join(' ');
@@ -502,7 +508,7 @@
             }
             
             // Get a random array entry
-            function random(items)
+            function randomItem(items)
             {
                 return items[Math.floor(Math.random()*items.length)];
             }

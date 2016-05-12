@@ -14,7 +14,7 @@ body {
     z-index: -30;
 }
 
-#background1 {
+#background {
     background-image: url('../images/background.jpg');
     background-size: cover;
     
@@ -64,15 +64,6 @@ div {
 .high, .low {
     font-size: 20vw; /* 5em */
     font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
-}
-
-.high {
-    color: tomato;
-}
-
-.low {
-    color: cadetblue;
 }
 
 .tempLabel {

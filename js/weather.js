@@ -95,20 +95,12 @@ $(document).ready(function() {
             var angle = 0;
             if(orientation == 90) {
                 angle = -y;
-                $('#background').css('width', screen.height);
-                $('#background').css('height', screen.width);
             } else if(orientation == 180) {
                 angle = -x;
-                $('#background').css('width', screen.width);
-                $('#background').css('height', screen.height);
             } else if(orientation == -90) {
                 angle = y;
-                $('#background').css('width', screen.height);
-                $('#background').css('height', screen.width);
             } else {
                 angle = x;
-                $('#background').css('width', screen.width);
-                $('#background').css('height', screen.height);
             }
             angle *= 4.5;
             angle += 90;
