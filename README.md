@@ -7,9 +7,11 @@ The website functions as a conversational weather assistant with the appearance 
 ## To Do
 - Set up the initial layout as per mockup (Jack)
 - Animated weather graphics (GIF/MP4) (Jack)
+- Integrate Sam's code (Sam/Jack)
 - Voice recognition (Sam)
 
 ## Done
+- Integrated Sam's canvas rain script (Jack)
 - Code carried over (http://jackcruden.com/MDDN352P2)
 
 

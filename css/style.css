@@ -2,7 +2,42 @@
 
 body {
     color: #454545;
-    background-color: #77DD77;
+}
+
+#background_container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    z-index: -30;
+}
+
+#background1 {
+    background-image: url('../images/background.jpg');
+    background-size: cover;
+    
+    margin: -3px;
+    
+    width: calc(100vw + 6px);
+    height: calc(100vh + 6px);
+    
+    filter: url(images/blur.svg#blur);
+	-webkit-filter: blur(3px);
+	filter: blur(3px);
+	filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius='3');
+        
+    z-index: -20;
+}
+
+#weather_canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -10;
 }
 
 div {
@@ -11,9 +46,8 @@ div {
 
 /* Header section */
 .day {
+    color: white;
     padding: 20px 0;
-    
-    background-color: #77DD77;
 }
 
 .day img {
@@ -47,16 +81,16 @@ div {
     font-size: 4vw;
 }
 
-#status {
-    margin: 10px 0 0 0;
-    font-size: 5vw;
-}
-
 /* Features (coloured background) */
 #chat {
-    padding-top: 10px;
-    max-height: 250px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
     overflow: scroll;
+    z-index: -1;
+    padding-top: 20px;
+    margin-bottom: 60px;
 }
 
 #chat::-webkit-scrollbar { 
@@ -80,7 +114,7 @@ div {
     margin-bottom: 10px;
     
     padding: 7px 14px;
-    border-radius: 20px;
+    border-radius: 5px;
     
     font-size: 1.3em;
 }
@@ -100,14 +134,15 @@ div {
 /* Speech to Weather Lad */
 .to {
     float: right;
-    background-color: #FDFD96;
+    color: white;
+    background-color: rgba(86, 191, 94, 0.74);
 }
 
 /* Speech from Weather Lad */
 .from {
     float: left;
     color: white;
-    background-color: #FF6961;
+    background-color: rgba(41, 41, 41, 0.78);
 }
 
 /* Say something */
@@ -178,65 +213,4 @@ footer {
 }
 #popupLoading {
     display: block;
-}
-
-/* Small devices (tablets, 768px and up) */
-@media (min-width: 768px) {
-    .day img {
-        max-width: 140%;
-    }
-
-    .dayOfWeek {
-        font-size: 1.9em;
-        margin-bottom: -10px;
-    }
-
-    .high, .low {
-        font-size: 3.5em;
-    }
-
-    .tempLabel {
-        margin-top: -15px;
-        font-size: 0.8em;
-    }
-    
-    #status {
-        font-size: 1.8em;
-    }
-    
-    #chat {
-        max-height: 450px;
-    }
-}
-
-/* Medium devices (desktops, 992px and up) */
-@media (min-width: 992px) {
-    .day img {
-        max-width: 120%;
-    }
-
-    .dayOfWeek {
-        font-size: 2.2em;
-        margin-bottom: -10px;
-    }
-
-    .high, .low {
-        font-size: 4em;
-    }
-
-    .tempLabel {
-        margin-top: -15px;
-        font-size: 1em;
-    }
-    
-    #status {
-        font-size: 1.8em;
-    }
-}
-
-/* Large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {
-    .day img {
-        max-width: 130%;
-    }
 }

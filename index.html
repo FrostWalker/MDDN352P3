@@ -38,83 +38,30 @@
     </head>
 
     <body>
+        <div id="background_container">
+            <div id="background1"></div>
+        </div>
+        
+        <canvas width="1" height="1" id="weather_canvas" data-weather="storm" data-frequency="2000" data-angle="90" data-speed="100"></canvas>
+        
         <div class="day">
             <div class="container">
-                <div class="row">
-                    <div class="col-sm-4 col-lg-3">
-                        <div class="col-xs-5">
-                            <img id="day1Icon" src="images/gifs/sun.gif">
+                <div class="col-xs-5">
+                    <img id="day1Icon" src="images/gifs/sun.gif">
+                </div>
+                <div class="col-xs-7">
+                    <span id="day1Day" class="dayOfWeek">Day</span>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <span id="day1High" class="high">H</span>
+                            <small class="tempLabel">HIGH</small>
                         </div>
-                        <div class="col-xs-7">
-                            <span id="day1Day" class="dayOfWeek">Day</span>
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <span id="day1High" class="high">H</span>
-                                    <small class="tempLabel">HIGH</small>
-                                </div>
-                                <div class="col-xs-6">
-                                    <span id="day1Low" class="low">L</span>
-                                    <small class="tempLabel">LOW</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4 col-lg-3 hidden-xs">
-                        <div class="col-xs-5">
-                            <img id="day2Icon" src="images/gifs/sun.gif">
-                        </div>
-                        <div class="col-xs-7">
-                            <span id="day2Day" class="dayOfWeek">Day</span>
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <span id="day2High" class="high">H</span>
-                                    <small class="tempLabel">HIGH</small>
-                                </div>
-                                <div class="col-xs-6">
-                                    <span id="day2Low" class="low">L</span>
-                                    <small class="tempLabel">LOW</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4 col-lg-3 hidden-xs">
-                        <div class="col-xs-5">
-                            <img id="day3Icon" src="images/gifs/sun.gif">
-                        </div>
-                        <div class="col-xs-7">
-                            <span id="day3Day" class="dayOfWeek">Day</span>
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <span id="day3High" class="high">H</span>
-                                    <small class="tempLabel">HIGH</small>
-                                </div>
-                                <div class="col-xs-6">
-                                    <span id="day3Low" class="low">L</span>
-                                    <small class="tempLabel">LOW</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4 col-lg-3 visible-lg-block">
-                        <div class="col-xs-5">
-                            <img id="day4Icon" src="images/gifs/sun.gif">
-                        </div>
-                        <div class="col-xs-7">
-                            <span id="day4Day" class="dayOfWeek">Day</span>
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <span id="day4High" class="high">H</span>
-                                    <small class="tempLabel">HIGH</small>
-                                </div>
-                                <div class="col-xs-6">
-                                    <span id="day4Low" class="low">L</span>
-                                    <small class="tempLabel">LOW</small>
-                                </div>
-                            </div>
+                        <div class="col-xs-6">
+                            <span id="day1Low" class="low">L</span>
+                            <small class="tempLabel">LOW</small>
                         </div>
                     </div>
                 </div>
-                <p id="status">Status.</p>
             </div>
         </div>
         
@@ -123,7 +70,7 @@
                 <div class="row">
                     <div class="col-sm-8 col-sm-offset-2">
                         <div class="speech from" id="firstMessage">
-                            Hey there! Ask me something weather related...
+                            Message
                         </div>
                         <div id="endOfMessages"></div>
                     </div>
@@ -339,6 +286,7 @@
             // Settings
             var weatherApiKey = '0f171838ffe7d226be21b8e88ebc6956';
             var googleApiKey = 'AIzaSyAWh9ksj-3PXvML9HMSgQuyNd2euwOH2lw';
+            var flickrApiKey = '3e5954b4fbe5a56d910af5d2a01a92c5';
             
             // The data variables
             var city = ''; // Wellington
@@ -346,10 +294,6 @@
             var weather = [];
             var forecast = [];
             
-            // If Chrome, recommend Firefox
-            if (navigator.userAgent.toLowerCase().indexOf('chrome') > -1) {
-                alert('Chrome doesn\'t allow use of the HTML5 GeoLocation API on insecure connections (http). Please use Firefox until Weather Lad is properly hosted.')
-            };
             // Check if browser supports W3C Geolocation API
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(locationSuccess, locationError);
@@ -364,7 +308,7 @@
                 status += generateStatus(forecast[0], true);
             
                 // Set the status
-                $('#status').html(status);
+                $('#firstMessage').html(status);
             }
             
             // Set the forecast data
@@ -455,7 +399,8 @@
                 var long = position.coords.longitude;
                                 
                 var url = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + lat + ',' + long + '&key=' + googleApiKey;
-                                
+                
+                // Get the address
                 $.ajax({
                     url: url,
                     type: 'GET',
@@ -488,6 +433,20 @@
                         // Show a failure dialogue
                         $('#popupWeather').show();
                         $('#popupBlack').show();
+                    },
+                    timeout: 5000
+                });
+                
+                // Update the background image
+                //$api_key = '3e5954b4fbe5a56d910af5d2a01a92c5';
+
+                // https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=api_key&lat=lat&lon=lon&radius=32&geo_context=2&per_page=500&format=json&nojsoncallback=1';
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    success: function (response) {
+                        // Get the image
+                        
                     },
                     timeout: 5000
                 });
@@ -594,6 +553,8 @@
                 return translate[iconCode];
             }
         </script>
+        
+        <script type="text/javascript" src="js/weather.js"></script>
 
     </body>
 
