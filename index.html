@@ -47,7 +47,7 @@
         <div class="day">
             <div class="container">
                 <div class="col-xs-5">
-                    <img id="day1Icon" src="images/gifs/sun.gif">
+                    <canvas id="dayIcon" width="130px" height="130px"></canvas>
                 </div>
                 <div class="col-xs-7">
                     <span id="day1Day" class="dayOfWeek">Day</span>
@@ -293,6 +293,7 @@
             var country = ''; // NZ
             var weather = [];
             var forecast = [];
+            var skycons; // Weather icon
             
             // Check if browser supports W3C Geolocation API
             if (navigator.geolocation) {
@@ -321,9 +322,8 @@
                     if (i > 4) return;
                     var i = index + 1;
                                         
-                    // Set the icons
-                    var icon = 'images/gifs/' + getWeatherIcon(forecast[index]['icon']) + '.gif';
-                    $('#day'+i+'Icon').attr('src', icon);
+                    // Change the icon
+                    skycons.set("dayIcon", getWeatherIcon(forecast[index]['icon']));
                     
                     // Set the day
                     $('#day'+i+'Day').html(forecast[index]['day']);
@@ -543,15 +543,15 @@
             {
                 // Translate icon code to image
                 translate = [];
-                translate['01'] = 'sun'; // Clear sky
-                translate['02'] = 'sun_cloud'; // Few clouds
-                translate['03'] = 'cloud'; // Scattered clouds
-                translate['04'] = 'cloud_cloud'; // Broken clouds
-                translate['09'] = 'cloud_rain'; // Shower rain
-                translate['10'] = 'sun_cloud_rain'; // Rain
-                translate['11'] = 'cloud_lightning'; // Thunderstorm
-                translate['13'] = 'cloud_rain'; // Snow
-                translate['50'] = 'cloud'; // Mist
+                translate['01'] = Skycons.CLEAR_DAY; // Clear sky
+                translate['02'] = Skycons.CLEAR_DAY; // Few clouds
+                translate['03'] = Skycons.PARTLY_CLOUDY_DAY; // Scattered clouds
+                translate['04'] = Skycons.PARTLY_CLOUDY_DAY; // Broken clouds
+                translate['09'] = Skycons.RAIN; // Shower rain
+                translate['10'] = Skycons.RAIN; // Rain
+                translate['11'] = Skycons.RAIN; // Thunderstorm
+                translate['13'] = Skycons.SNOW; // Snow
+                translate['50'] = Skycons.FOG; // Mist
                 
                 // Trim the code
                 iconCode = iconCode.substring(0, 2);
@@ -562,6 +562,18 @@
         
         <script type="text/javascript" src="js/weather.js"></script>
 
+        <!-- Animated weather icons -->
+        <script type="text/javascript" src="https://cdn.rawgit.com/darkskyapp/skycons/master/skycons.js"></script>
+        <script>
+            skycons = new Skycons({"color": "white"});
+
+            // you can add a canvas by it's ID...
+            skycons.add("dayIcon", Skycons.PARTLY_CLOUDY_DAY);
+
+            // start animation!
+            skycons.play();
+        </script>
+        
     </body>
 
 </html>
