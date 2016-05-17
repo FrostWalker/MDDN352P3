@@ -1,7 +1,13 @@
-// Load Voicebank
-window.speechSynthesis.getVoices();
-
 var lang;
+var hasSpeech = false;
+
+//check if browser has speech capabilities
+if ('speechSynthesis' in window) {
+  hasSpeech = true;
+    
+  // Load Voicebank
+  window.speechSynthesis.getVoices();
+}
 
 function loadLanguage(lang, callback) {
     var xmlhttp = new XMLHttpRequest();
@@ -34,7 +40,6 @@ loadLanguage('en', function(e) {
 $('#saySomething input').keyup(function(event) {
     // If not enter, ignore
     if (event.keyCode != 13) return;
-
     // Construct the speech box
     var toMessage = $('<div class="speech to"></div>');
 
@@ -45,21 +50,24 @@ $('#saySomething input').keyup(function(event) {
     $('#saySomething input').val('');
     
     
-    //Stop any current speach
-    window.speechSynthesis.cancel();
-    
-    //Create the voice
-    var msg = new SpeechSynthesisUtterance();
-    var voices = window.speechSynthesis.getVoices();
-    msg.voice = voices.filter(function(voice) { return voice.name == lang.userLang; })[0];
-    msg.volume = 1; // 0 to 1
-    msg.rate = 1.3; // 0.1 to 10
-    msg.pitch = 1; //0 to 2
-    msg.text = query;
-    msg.lang = msg.voice.lang;
 
-    //Speak
-    speechSynthesis.speak(msg);
+    if(hasSpeech) {
+        //Stop any current speach
+        window.speechSynthesis.cancel();
+
+        //Create the voice
+        var msg = new SpeechSynthesisUtterance();
+        var voices = window.speechSynthesis.getVoices();
+        msg.voice = voices.filter(function(voice) { return voice.name == lang.userLang; })[0];
+        msg.volume = 1; // 0 to 1
+        msg.rate = 1.3; // 0.1 to 10
+        msg.pitch = 1; //0 to 2
+        msg.text = query;
+        msg.lang = msg.voice.lang;
+
+        //Speak
+        speechSynthesis.speak(msg);
+    }
 
     // Process the query
     processQuery(query);
@@ -74,18 +82,20 @@ function sendMessage(message)
     var fromMessage = $('<div class="speech from"></div>');
     fromMessage.html(message);
     
-    //Create the voice        
-    var msg = new SpeechSynthesisUtterance();
-    var voices = window.speechSynthesis.getVoices();
-    msg.voice = voices.filter(function(voice) { return voice.name == lang.systemLang; })[0];;
-    msg.volume = 1; // 0 to 1
-    msg.rate = 1.2; // 0.1 to 10
-    msg.pitch = 1; //0 to 2
-    msg.text = message;
-    msg.lang = msg.voice.lang;
+    if(hasSpeech) {
+        //Create the voice        
+        var msg = new SpeechSynthesisUtterance();
+        var voices = window.speechSynthesis.getVoices();
+        msg.voice = voices.filter(function(voice) { return voice.name == lang.systemLang; })[0];;
+        msg.volume = 1; // 0 to 1
+        msg.rate = 1.2; // 0.1 to 10
+        msg.pitch = 1; //0 to 2
+        msg.text = message;
+        msg.lang = msg.voice.lang;
 
-    //Speak
-    speechSynthesis.speak(msg);
+        //Queue speach
+        speechSynthesis.speak(msg);        
+    }
     
     setTimeout(function() {
         fromMessage.insertBefore($('#endOfMessages'));
