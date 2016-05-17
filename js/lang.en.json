@@ -1,0 +1,75 @@
+{
+  "userLang": "Google UK English Male",
+  "systemLang": "Google UK English Female",
+    
+  "today": "today",
+  "tomorrow": "tomorrow",
+  
+  "days": [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+  ],
+  
+  "greetings": [
+      "Hello!",
+      "Good Morning!",
+      "Good Day!",
+      "Good Afternoon!",
+      "Good Evening!"
+  ],
+  
+  "responses": [
+    [
+        "Looks like it will be",
+        "Seems like it's gonna be",
+        "My sources say"
+    ],
+    [
+        "in",
+        "over",
+        "near"
+    ],
+    [
+        "We'll have temperatures up to",
+        "A high of",
+        "Peaking at"
+    ],
+    [
+        "and down to",
+        ", with a low of",
+        "and as low as"
+    ]
+  ],
+  
+  "summary": [
+    [
+        "Not too bad today, temperature wise.",
+        "Getting a little heat on today.",
+        "I'd consider heading to the beach!"
+    ],
+    [
+        "Not the warmest day, eh.",
+        "Could definitely be warmer.",
+        "Maybe not a day for the beach."
+    ],
+    [
+        "You'll probably be wanting a jersey out today.",
+        "Definitely take a coat out.",
+        "Layer up!"
+    ]
+  ],
+  
+  "unknown": [
+    "Hmm, I'm not sure how to respond.",
+    "Sorry, I'm pretty dumb at the moment. I'm learning, though!",
+    "Sorry, can't help you there.",
+    "Literally no idea what you just said.",
+    "English please.",
+    "Yeah, you're gonna need to be a bit less vague, cheers."
+  ]
+}
