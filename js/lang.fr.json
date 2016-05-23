@@ -1,0 +1,177 @@
+{
+  "userLang": [
+      "Google français",
+      "French France",
+      "French",
+      ""
+  ],
+  "systemLang": [
+      "Google français",
+      "French France",
+      "French",
+      ""
+  ],
+  
+  "defaultMessage": "Demander quelque chose...",
+  
+  "high": "haute",
+  "low": "faible",
+    
+  "today": "aujourd'hui",
+  "tomorrow": "demain",
+  
+  "days": [
+      "Dimanche",
+      "Lundi",
+      "Mardi",
+      "Mercredi",
+      "Jeudi",
+      "Vendredi",
+      "Samedi"
+  ],
+  
+  "greetings": [
+      "Bonjour!",
+      "Bonjour!",
+      "Bonne Journée!",
+      "Bonne Après-midi!",
+      "Bonsoir!"
+  ],
+  
+  "structure": "[R0] [WEATHER] [R1] [CITY] [DAY]. [R2] [TEMPMAX] [R3] [TEMPMIN]. [SUMMARY]",
+  
+  "daygenerics": [
+      "aujourd'hui",
+      "demain",
+      "après-demain",
+      "[DAY]"
+  ],
+  
+  "responses": [
+    [
+        "On dirait qu'il sera",
+        "Il semble que ça va être",
+        "Mes sources disent"
+    ],
+    [
+        "à",
+        "en",
+        "dans",
+        "sur",
+        "près"
+    ],
+    [
+        "Nous aurons des températures allant jusqu'à",
+        "Un haut de",
+        "Culminant à"
+    ],
+    [
+        "et jusqu'à",
+        ", avec un minimum de",
+        "et aussi bas que"
+    ]
+  ],
+  
+  "summary": [
+    [
+        "La température est pas trop mal aujourd'hui.",
+        "Il est un peu chaud aujourd'hui.",
+        "Je suggère d'aller à la plage!"
+    ],
+    [
+        "Il est pas le jour le plus chaud, est-il.",
+        "Il pourrait certainement être plus chaud.",
+        "Peut-être pas le meilleur jour pour la plage."
+    ],
+    [
+        "Vous devriez porter un maillot aujourd'hui.",
+        "Certainement prendre un manteau sur.",
+        "Couche-toi!"
+    ]
+  ],
+  
+  "unknown": [
+    "Hmm, je ne suis pas sûr de savoir comment réagir.",
+    "Désolé, je suis assez stupide pour le moment. J'apprends, si!",
+    "Désolé, je ne peux pas vous aider là-bas.",
+    "J'ai littéralement aucune idée de ce que vous venez de dire.",
+    "Parlez-vous français?",
+    "Ouais, vous allez devoir être un peu moins vague, merci."
+  ],
+  
+  "weatherstatus": {
+    "200": "orage avec pluie",
+    "201": "orage avec de la pluie",
+    "202": "orage avec de fortes pluies",
+    "210": "orage lumière",
+    "211": "orage",
+    "212": "orage violent",
+    "221": "orage haillons",
+    "230": "orage avec pluie",
+    "231": "orage avec de la bruine",
+    "232": "orage avec pluie lourde",
+    "300": "bruine d'intensité lumineuse",
+    "301": "bruine",
+    "302": "bruine d'intensité lourde",
+    "310": "intensité modérée pluie",
+    "311": "bruine pluie",
+    "312": "intensité lourde pluie pluie",
+    "313": "douche de pluie et de la bruine",
+    "314": "averse de pluie et de la bruine",
+    "321": "douche pluie",
+    "500": "pluie légère",
+    "501": "pluie modérée",
+    "502": "pluie d'intensité lourde",
+    "503": "très fortes pluies",
+    "504": "pluie extrême",
+    "511": "pluie verglaçante",
+    "520": "intensité lumineuse douche pluie",
+    "521": "douche pluie",
+    "522": "intensité forte averse de pluie",
+    "531": "loqueteux douche pluie",
+    "600": "neige légère",
+    "601": "neige",
+    "602": "beaucoup de neige",
+    "611": "neige fondue",
+    "612": "grésil de douche",
+    "615": "pluie et la neige",
+    "616": "pluie et neige",
+    "620": "neige de douche de lumière",
+    "621": "neige de douche",
+    "622": "neige d'eau lourde",
+    "701": "brouillard",
+    "711": "fumée",
+    "721": "brume",
+    "731": "sable, tourbillons de poussière",
+    "741": "brouillard",
+    "751": "le sable",
+    "761": "poussière",
+    "762": "cendre volcanique",
+    "771": "grains",
+    "781": "tornade",
+    "800": "ciel clair",
+    "801": "quelques nuages",
+    "802": "nuages dispersés",
+    "803": "nuages brisés",
+    "804": "ciel couvert",
+    "900": "tornade",
+    "901": "tempête tropicale",
+    "902": "ouragan",
+    "903": "du froid",
+    "904": "chaud",
+    "905": "venteux",
+    "906": "saluer",
+    "951": "calme",
+    "952": "brise légère",
+    "953": "petite brise",
+    "954": "brise modérée",
+    "955": "brise fraîche",
+    "956": "forte brise",
+    "957": "vent fort, près de gale",
+    "958": "coup de vent",
+    "959": "gale sévère",
+    "960": "orage",
+    "961": "tempête violente",
+    "962": "ouragan"
+  }
+}

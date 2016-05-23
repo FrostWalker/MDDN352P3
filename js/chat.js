@@ -23,8 +23,15 @@ function loadLanguage(lang, callback) {
     xmlhttp.send();
 }
 
-loadLanguage('en', function(e) {
-    lang = e;
+loadLanguage('en', function(event) {
+    lang = event;
+    
+    document.getElementById("messagebox").setAttribute('placeholder', lang.defaultMessage);
+    document.getElementById("temphighlabel").innerHTML = lang.high;
+    document.getElementById("templowlabel").innerHTML = lang.low;
+    
+    
+    
     // Check if browser supports W3C Geolocation API
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(locationSuccess, locationError);
@@ -55,18 +62,19 @@ $('#saySomething input').keyup(function(event) {
         //Stop any current speach
         window.speechSynthesis.cancel();
 
-        //Create the voice
-        var msg = new SpeechSynthesisUtterance();
-        var voices = window.speechSynthesis.getVoices();
-        msg.voice = voices.filter(function(voice) { return voice.name == lang.userLang; })[0];
-        msg.volume = 1; // 0 to 1
-        msg.rate = 1.3; // 0.1 to 10
-        msg.pitch = 1; //0 to 2
-        msg.text = query;
-        msg.lang = msg.voice.lang;
+        getVoice(lang.userLang, function(voice) {
+            //Create the voice        
+            var msg = new SpeechSynthesisUtterance();
+            msg.voice = voice;
+            msg.volume = 1; // 0 to 1
+            msg.rate = 1.3; // 0.1 to 10
+            msg.pitch = 1; //0 to 2
+            msg.text = query;
+            msg.lang = msg.voice.lang;
 
-        //Speak
-        speechSynthesis.speak(msg);
+            //Speak
+            speechSynthesis.speak(msg);
+        });
     }
 
     // Process the query
@@ -77,24 +85,36 @@ $('#saySomething input').keyup(function(event) {
     $("#chat").animate({scrollTop: scroll}, 200);
 });
 
+function getVoice(voiceList, callback) {
+    var voices = window.speechSynthesis.getVoices();
+    voiceList.some(function(item, index) {
+        var voicebank = voices.filter(function(voice) { return voice.name.indexOf(item) > -1; });
+        if(voicebank.length > 0) {
+            callback(voicebank[0]);
+            return true;
+        }
+    });
+}
+
 function sendMessage(message)
 {
     var fromMessage = $('<div class="speech from"></div>');
     fromMessage.html(message);
     
     if(hasSpeech) {
-        //Create the voice        
-        var msg = new SpeechSynthesisUtterance();
-        var voices = window.speechSynthesis.getVoices();
-        msg.voice = voices.filter(function(voice) { return voice.name == lang.systemLang; })[0];;
-        msg.volume = 1; // 0 to 1
-        msg.rate = 1.2; // 0.1 to 10
-        msg.pitch = 1; //0 to 2
-        msg.text = message;
-        msg.lang = msg.voice.lang;
+        getVoice(lang.systemLang, function(voice) {
+            //Create the voice        
+            var msg = new SpeechSynthesisUtterance();
+            msg.voice = voice;
+            msg.volume = 1; // 0 to 1
+            msg.rate = 1.2; // 0.1 to 10
+            msg.pitch = 1; //0 to 2
+            msg.text = message;
+            msg.lang = msg.voice.lang;
 
-        //Queue speach
-        speechSynthesis.speak(msg);        
+            //Queue speach
+            speechSynthesis.speak(msg); 
+        });       
     }
     
     setTimeout(function() {
@@ -113,40 +133,45 @@ function processQuery(q)
 {
     // Clean the query
     q = q.toLowerCase();
-    q = q.split(' ');
-    q.forEach(function(item, i) {
-        q[i] = item.replace(/[^a-z]/g, "");
-    });
-    q.join(" ");
-
-    if (match(q, ['tomorrow'])) {
-        sendMessage(generateResponse(forecast[1]));
-    } else if (match(q, lang.days)) {
-        forecast.forEach(function(item, i) {
-            if (q.indexOf(item['day'].toLowerCase()) > -1) {
-                sendMessage(generateResponse(forecast[i]));
-                return;
-            }
-        });
-    } else {
-        // Don't know
-        sendMessage(randomItem(lang.unknown));
+    // q = q.split(' ');
+    // q.forEach(function(item, i) {
+    //     q[i] = item.replace(/[^a-z]/g, "");
+    // });
+    // q.join(" ");
+    
+    var days = lang.days.slice(0);
+    var n = new Date().getDay();
+    for(var i = 0; i < n+2; ++i) {
+        days.push(days.shift());
     }
+    
+    match(q, [lang.today].concat([lang.tomorrow].concat(days)), function(index) {
+        index %= 7;
+        if(index > -1) {
+            sendMessage(generateResponse(forecast[index]));
+            return true;
+        } else {
+            sendMessage(randomItem(lang.unknown));
+            return false;
+        }
+    });
 }
 
-function match(query, words)
+function match(query, words, callback)
 {
-    var contains = false;
-    query.forEach(function(q, qI) {
-        words.forEach(function(w, qI) {
-            if (q.toLowerCase() == w.toLowerCase()) {
-                contains = true;
-                return;
-            }
-        });
+    var found = false;
+    words.some(function(item, index) {
+        var loc = query.toLowerCase().indexOf(item.toLowerCase());
+        if(loc > -1) {
+            callback(index);
+            found = true;
+            return true;
+        }
     });
-
-    return contains;
+    if(!found) {
+        callback(-1);
+        return false;
+    }
 }
 
 // ----------------------------------------------------------------------
@@ -195,7 +220,7 @@ function setForecast()
 function getForecast()
 {
     // Make the URL
-    url = "http://api.openweathermap.org/data/2.5/forecast/daily?q=" + city + "&appid=" + weatherApiKey;
+    url = "//json.ey.nz/api.openweathermap.org/data/2.5/forecast/daily?q=" + city + "&units=metric&cnt=16&appid=" + weatherApiKey;
 
     // Make the call
     $.ajax({
@@ -204,7 +229,7 @@ function getForecast()
         success: function (response) {
             var items = response['list'];
 
-            items.forEach(function(item, index) {
+            items.some(function(item, index) {
                 // If in the past, ignore it
                 var m = moment(item['dt']*1000).utc();                            
                 if (m.format('X') < moment().format('X')) return;
@@ -213,9 +238,9 @@ function getForecast()
                 day['moment'] = moment(item['dt']*1000).utc();
                 day['day'] = lang.days[moment(item['dt']*1000).utc().day()];
                 day['icon'] = item['weather'][0]['icon'];
-                day['description'] = item['weather'][0]['description']
-                day['high'] = Math.round(item['temp']['max'] - 273.15);
-                day['low'] = Math.round(item['temp']['min'] - 273.15);
+                day['description'] = lang.weatherstatus[item['weather'][0]['id']];
+                day['high'] = Math.round(item['temp']['max']);
+                day['low'] = Math.round(item['temp']['min']);
 
                 forecast.push(day);
             });
@@ -296,14 +321,14 @@ function locationSuccess(position)
         url: flickrUrl,
         type: 'GET',
         success: function (response) {
-            var item = Math.round(Math.random() * 60);
+            var item = Math.round(Math.random() * response.photos.total);
             var photoData = response.photos.photo[item];
             var farm = response.photos.photo[item].farm;
             var server = response.photos.photo[item].server;
             var id = response.photos.photo[item].id;
             var secret = response.photos.photo[item].secret;
 
-            var imageUrl = 'http://farm' + farm + '.staticflickr.com/' + server + '/' + id + '_' + secret + '_b.jpg';
+            var imageUrl = '//farm' + farm + '.staticflickr.com/' + server + '/' + id + '_' + secret + '_b.jpg';
 
             $('#background').css('background-image', 'url(' + imageUrl + ')');
         },
@@ -312,8 +337,9 @@ function locationSuccess(position)
 }
 
 // Location error
-function locationError()
+function locationError(e)
 {
+    console.log('location error' + e);
     // Show a failure dialogue
     $('#popupWeather').show();
     $('#popupBlack').show();
@@ -322,31 +348,51 @@ function locationError()
 function generateResponse(day)
 {
     var vars = lang.responses;
-
+    
     var status = [];
-    status.push(randomItem(vars[0])); // Looks like it's
-    status.push(day['description']); // cloudy
-    status.push(randomItem(vars[1])); // in
-    status.push(city); // Wellington.
-
     var index = forecast.indexOf(day);
-    status.push((index == 0 ? lang.today : index == 1 ? lang.tomorrow : 'on ' + day['day']) + '.');
-    status.push(randomItem(vars[2])); // With a high of
-    status.push(day['high']);
-    status.push(randomItem(vars[3])); // and a low of
-    status.push(day['low']+'.');
+    
+    var structure = lang.structure;
+    structure = structure.replace('[R0]', randomItem(vars[0])); // Looks like it's
+    structure = structure.replace('[WEATHER]', day['description']); // cloudy
+    structure = structure.replace('[R1]', randomItem(vars[1])); // in
+    structure = structure.replace('[CITY]', city); // Wellington
 
-    if (day['high'] > 22) {
-        status.push(randomItem(lang.summary[0])); // Good day for the beach.
-    } else if (day['high'] > 17) {
-        status.push(randomItem(lang.summary[1])); // Could be warmer.
-    } else {
-        status.push(randomItem(lang.summary[2])); // Layer up!
-    }
+    structure = structure.replace('[DAY]', (index <= 2 ? lang.daygenerics[index] : lang.daygenerics[3].replace('[DAY]', day['day']))); // tomorrow
+    
+    structure = structure.replace('[R2]', randomItem(vars[2])); // With a high of
+    structure = structure.replace('[TEMPMAX]', day['high']); // 12
+    structure = structure.replace('[R3]', randomItem(vars[3])); // and a low of
+    structure = structure.replace('[TEMPMIN]', day['low']); // 8
+    
+    structure = structure.replace('[SUMMARY]', randomItem(lang.summary[day['high'] > 22 ? 0 : day['high'] > 17 ? 1 : 2])); // Good day for the beach
 
-    status = status.join(' ');
+    return structure;
+    
+    // console.log(structure);
 
-    return status;
+    // status.push(randomItem(vars[0])); // Looks like it's
+    // status.push(day['description']); // cloudy
+    // status.push(randomItem(vars[1])); // in
+    // status.push(city); // Wellington.
+
+    // status.push((index == 0 ? lang.today : index == 1 ? lang.tomorrow : 'on ' + day['day']) + '.');
+    // status.push(randomItem(vars[2])); // With a high of
+    // status.push(day['high']);
+    // status.push(randomItem(vars[3])); // and a low of
+    // status.push(day['low']+'.');
+
+    // if (day['high'] > 22) {
+    //     status.push(randomItem(lang.summary[0])); // Good day for the beach.
+    // } else if (day['high'] > 17) {
+    //     status.push(randomItem(lang.summary[1])); // Could be warmer.
+    // } else {
+    //     status.push(randomItem(lang.summary[2])); // Layer up!
+    // }
+
+    // status = status.join(' ');
+
+    // return status;
 }
 
 // Get a random array entry

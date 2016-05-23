@@ -28,6 +28,7 @@
         <!-- Google Fonts -->
         <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Montserrat:700,400' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
         
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -54,11 +55,11 @@
                     <div class="row">
                         <div class="col-xs-6">
                             <span id="day1High" class="high">H</span>
-                            <small class="tempLabel">HIGH</small>
+                            <small id="temphighlabel" class="tempLabel">HIGH</small>
                         </div>
                         <div class="col-xs-6">
                             <span id="day1Low" class="low">L</span>
-                            <small class="tempLabel">LOW</small>
+                            <small id="templowlabel" class="tempLabel">LOW</small>
                         </div>
                     </div>
                 </div>
@@ -78,8 +79,11 @@
         <div class="container" id="input">
             <div class="row">
                 <div class="col-sm-8 col-sm-offset-2">
-                    <div class="speech say" id="saySomething">
-                        <input type="text" placeholder="Ask something...">
+                    <div id="voicerecognition">
+                        <input type="button" value="" />
+                    </div>
+                    <div class="say" id="saySomething">
+                        <input id="messagebox" type="text" placeholder="Ask something...">
                     </div>
                 </div>
             </div>

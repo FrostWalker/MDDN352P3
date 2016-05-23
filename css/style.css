@@ -24,9 +24,9 @@ body {
     height: calc(100vh + 12px);
     
     filter: url(images/blur.svg#blur);
-	-webkit-filter: blur(6px);
-	filter: blur(6px);
-	filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius='6');
+	-webkit-filter: blur(2px);
+	filter: blur(2px);
+	filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius='2');
         
     z-index: -20;
 }
@@ -41,7 +41,8 @@ body {
 }
 
 div {
-    font-family: 'Raleway', sans-serif;
+/*    font-family: 'Raleway', sans-serif;*/
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 /* Header section */
@@ -74,6 +75,7 @@ div {
     display: block;
     margin-top: -5vw;
     font-size: 4vw;
+    text-transform: uppercase;
 }
 
 /* Features (coloured background) */
@@ -93,27 +95,6 @@ div {
     display: none; 
 }
 
-/* Text input at bottom of page */
-#input {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-}
-
-/* Speech */
-.speech {
-    display: block;
-    clear: both;
-    max-width: 80%;
-    margin-bottom: 10px;
-    
-    padding: 7px 14px;
-    border-radius: 5px;
-    
-    font-size: 1.3em;
-}
-
 .feature .speech:first-child {
     margin-top: 20px;
 }
@@ -126,24 +107,46 @@ div {
     margin-top: 200px;
 }
 
+/* Speech */
+.speech {
+    display: block;
+    clear: both;
+    max-width: 80%;
+    margin: 5px 0;
+    padding: 7px 14px;
+    border-radius: 5px;
+    color: #333;
+    font-size: 1.2em;
+    box-shadow: 0px 0px 15px -5px rgba(0, 0, 0, 0.25);
+}
 /* Speech to Weather Lad */
 .to {
     float: right;
-    color: white;
-    background-color: rgba(86, 191, 94, 0.74);
+    
+    background: #44bb44;
+    color: #eee;
 }
 
 /* Speech from Weather Lad */
 .from {
     float: left;
-    color: white;
-    background-color: rgba(41, 41, 41, 0.78);
+    
+    background: #eee;
 }
 
+/* Text input at bottom of page */
+#input {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #ffffff;
+    box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.5);
+}
 /* Say something */
 #saySomething {
-    margin-top: 10px;
-    margin-bottom: 15px;
+    margin-right: 46px;
+    height: 36px;
 }
 
 .say {
@@ -152,15 +155,44 @@ div {
     background-color: #ffffff;
 }
 
-.say input {
-    background-color: inherit;
+#voicerecognition {
+    width: 36px;
+    float: right;
+    margin: 10px 0;
+    height: 36px;
+}
+
+#saySomething input {
+    background-color: #ffffff;
     border-width: 0;
     border: none;
     width: 100%;
     box-shadow: 0;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    margin: 10px 0;
+    padding: 5px;
+    border-radius: 4px;
+    height: 36px;
+}
+#saySomething input:focus {
+    border: 1px solid rgba(0, 100, 0, 0.5);
+    box-shadow: 0px 0px 20px -5px rgba(0, 100, 0, 0.25);
 }
 
-.say input:focus {
+#voicerecognition input {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background: transparent url('../images/mic_inactive.svg') no-repeat center center;
+    background-size: 20px 20px;
+}
+#voicerecognition input:hover {
+    background-image: url('../images/mic_active.svg');
+}
+
+input:focus {
     outline: none;
 }
 
