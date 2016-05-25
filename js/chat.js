@@ -235,22 +235,27 @@ function getForecast()
 {
     // Make the URL
     url = "//json.ey.nz/api.openweathermap.org/data/2.5/forecast/daily?q=" + city + "&units=metric&cnt=16&appid=" + weatherApiKey;
-
     // Make the call
     $.ajax({
         url: url,
         type: 'GET',
         success: function (response) {
             var items = response['list'];
+            
+            var today = new Date();
 
             items.some(function(item, index) {
-                // If in the past, ignore it
-                var m = moment(item['dt']*1000).utc();                            
-                if (m.format('X') < moment().format('X')) return;
+                // If in the past, ignore it                
+                
+                var newdate = new Date(item['dt']*1000);
+                newdate.setTime(newdate.getTime() + newdate.getTimezoneOffset()*60*1000 );
 
+                if(newdate < today) {
+                    return;
+                }
+                
                 var day = [];
-                day['moment'] = moment(item['dt']*1000).utc();
-                day['day'] = lang.days[moment(item['dt']*1000).utc().day()];
+                day['day'] = newdate.getDay();
                 day['icon'] = item['weather'][0]['icon'];
                 day['description'] = item['weather'][0]['id'];
                 day['high'] = Math.round(item['temp']['max']);
@@ -372,7 +377,7 @@ function generateResponse(day)
     structure = structure.replace('[R1]', randomItem(vars[1])); // in
     structure = structure.replace('[CITY]', city); // Wellington
 
-    structure = structure.replace('[DAY]', (index <= 2 ? lang.daygenerics[index] : lang.daygenerics[3].replace('[DAY]', day['day']))); // tomorrow
+    structure = structure.replace('[DAY]', (index <= 2 ? lang.daygenerics[index] : lang.daygenerics[3].replace('[DAY]', lang.days[day['day']]))); // tomorrow
     
     structure = structure.replace('[R2]', randomItem(vars[2])); // With a high of
     structure = structure.replace('[TEMPMAX]', day['high']); // 12
@@ -418,12 +423,9 @@ function randomItem(items)
 // Generate a welcome greeting depending on the time of day
 function getGreeting()
 {
-    var m = moment();
     var g = null; //return g
-
-    if(!m || !m.isValid()) { return; } //if we can't find a valid or filled moment, we return.
-
-    var now = parseFloat(m.format("HH"));
+    
+    var now = new Date().getHours();
 
     var mrn = 0; //Morning
     var day = 11; //Midday
