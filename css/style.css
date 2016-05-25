@@ -191,10 +191,6 @@ div {
     border-radius: 4px;
     height: 36px;
 }
-#saySomething input:focus {
-    border: 1px solid rgba(0, 100, 0, 0.5);
-    box-shadow: 0px 0px 20px -5px rgba(0, 100, 0, 0.25);
-}
 
 #voicerecognition {
     width: 36px;
@@ -250,13 +246,13 @@ footer {
     width: 60%;
     padding: 16px;
     border-radius: 10px;
-    background-color: #77DD77;
+    background-color: white;
     z-index: 1002;
     overflow: auto;
     text-align: center;
     font-size: 5vw;
 }
-.popup img {
+.popup .loading-icon {
     display: block;
     max-width: 20vw;
     max-height: 20vw;
