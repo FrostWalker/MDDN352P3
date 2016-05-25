@@ -29,6 +29,7 @@ loadLanguage('en', function(event) {
     document.getElementById("messagebox").setAttribute('placeholder', lang.defaultMessage);
     document.getElementById("temphighlabel").innerHTML = lang.high;
     document.getElementById("templowlabel").innerHTML = lang.low;
+    document.getElementById("day1Day").innerHTML = lang.days[new Date().getDay()];
     
     // Check if browser supports W3C Geolocation API
     if (navigator.geolocation) {
@@ -160,6 +161,7 @@ function processQuery(q)
                 document.getElementById("messagebox").setAttribute('placeholder', lang.defaultMessage);
                 document.getElementById("temphighlabel").innerHTML = lang.high;
                 document.getElementById("templowlabel").innerHTML = lang.low;
+    		document.getElementById("day1Day").innerHTML = lang.days[new Date().getDay()];
                 
                 sendMessage(lang.affirmation);
                 setStatus();
@@ -223,7 +225,7 @@ function setForecast()
         skycons.set("dayIcon", getWeatherIcon(forecast[index]['icon']));
 
         // Set the day
-        $('#day'+i+'Day').html(forecast[index]['day']);
+        $('#day'+i+'Day').html(lang.days[forecast[index]['day']]);
 
         // Set the high and the low
         $('#day'+i+'High').html(forecast[index]['high']);
