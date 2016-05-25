@@ -2,15 +2,20 @@
   "userLang": [
       "Google 日本語",
       "Japanese",
+      "Kyoko",
       ""
   ],
   "systemLang": [
       "Google 日本語",
       "Japanese",
+      "Kyoko",
       ""
   ],
   
   "defaultMessage": "何かを求めませんか？…",
+  
+  "affirmation": "はい。",
+  "deny": "いいえ、申し訳ありません…",
   
   "high": "高い",
   "low": "低い",

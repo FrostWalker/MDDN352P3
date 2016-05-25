@@ -3,16 +3,23 @@
       "Google français",
       "French France",
       "French",
+      "Amelie",
+      "Thomas",
       ""
   ],
   "systemLang": [
       "Google français",
       "French France",
       "French",
+      "Amelie",
+      "Thomas",
       ""
   ],
   
   "defaultMessage": "Demander quelque chose...",
+  
+  "affirmation": "Oui.",
+  "deny": "Non désolé...",
   
   "high": "haute",
   "low": "faible",
@@ -38,7 +45,7 @@
       "Bonsoir!"
   ],
   
-  "structure": "[R0] [WEATHER] [R1] [CITY] [DAY]. [R2] [TEMPMAX] [R3] [TEMPMIN]. [SUMMARY]",
+  "structure": "[R0] [WEATHER] [R1] [CITY] [DAY]. [R2] [TEMPMAX][R3] [TEMPMIN]. [SUMMARY]",
   
   "daygenerics": [
       "aujourd'hui",
@@ -66,9 +73,9 @@
         "Culminant à"
     ],
     [
-        "et jusqu'à",
+        " et jusqu'à",
         ", avec un minimum de",
-        "et aussi bas que"
+        " et aussi bas que"
     ]
   ],
   

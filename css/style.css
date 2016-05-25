@@ -5,7 +5,7 @@ body {
 }
 
 #background_container {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -45,14 +45,32 @@ div {
     font-family: 'Source Sans Pro', sans-serif;
 }
 
+#topbox {
+    height: 0px;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    
+    box-shadow: 0px 50px 250px 0px rgba(0, 0, 0, 0.5);
+}
+
 /* Header section */
 .day {
+    height: 170px;
+    font-size: 12px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     color: white;
     padding: 20px 0;
     background: -moz-linear-gradient(top, rgba(0,0,0,0.5) 0%, rgba(255,255,255,0) 100%); /* FF3.6-15 */
     background: -webkit-linear-gradient(top, rgba(0,0,0,0.5) 0%,rgba(255,255,255,0) 100%); /* Chrome10-25,Safari5.1-6 */
     background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%,rgba(255,255,255,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80000000', endColorstr='#00ffffff',GradientType=0 ); /* IE6-9 */
+    
 }
 
 .day img {
@@ -62,33 +80,37 @@ div {
 .dayOfWeek {
     display: block;
     margin-bottom: -20px;
-    font-size: 6.5vw;
+    font-size: 3em;
     font-family: 'Montserrat', sans-serif;
 }
 
 .high, .low {
-    font-size: 20vw; /* 5em */
+    font-size: 5em; /* 5em */
     font-family: 'Montserrat', sans-serif;
 }
 
 .tempLabel {
     display: block;
-    margin-top: -5vw;
-    font-size: 4vw;
+    margin-top: -15px;
+    font-size: 2em;
     text-transform: uppercase;
 }
 
 /* Features (coloured background) */
 #chat {
-    position: absolute;
+    position: fixed;
     top: 170px;
     left: 0;
     right: 0;
     bottom: 0;
     overflow: scroll;
-    z-index: -1;
+    z-index: 1;
     padding-top: 20px;
     margin-bottom: 60px;
+    overflow: scroll;
+}
+#chat .container {
+    
 }
 
 #chat::-webkit-scrollbar { 
@@ -130,7 +152,6 @@ div {
 /* Speech from Weather Lad */
 .from {
     float: left;
-    
     background: #eee;
 }
 
@@ -142,10 +163,13 @@ div {
     bottom: 0;
     background: #ffffff;
     box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.5);
+    height: 56px;
+    width: 100wv!important;
+    padding: 0 10px;
 }
 /* Say something */
 #saySomething {
-    margin-right: 46px;
+    /*margin-right: 46px;*/
     height: 36px;
 }
 
@@ -153,13 +177,6 @@ div {
     float: none;
     max-width: none;
     background-color: #ffffff;
-}
-
-#voicerecognition {
-    width: 36px;
-    float: right;
-    margin: 10px 0;
-    height: 36px;
 }
 
 #saySomething input {
@@ -177,6 +194,14 @@ div {
 #saySomething input:focus {
     border: 1px solid rgba(0, 100, 0, 0.5);
     box-shadow: 0px 0px 20px -5px rgba(0, 100, 0, 0.25);
+}
+
+#voicerecognition {
+    width: 36px;
+    float: right;
+    margin: 10px 0;
+    height: 36px;
+    display: none;
 }
 
 #voicerecognition input {

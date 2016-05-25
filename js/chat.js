@@ -30,8 +30,6 @@ loadLanguage('en', function(event) {
     document.getElementById("temphighlabel").innerHTML = lang.high;
     document.getElementById("templowlabel").innerHTML = lang.low;
     
-    
-    
     // Check if browser supports W3C Geolocation API
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(locationSuccess, locationError);
@@ -42,6 +40,18 @@ loadLanguage('en', function(event) {
 // -----------------------------------------------------
 // Messaging Functions
 // -----------------------------------------------------
+
+
+function getVoice(voiceList, callback) {
+    var voices = window.speechSynthesis.getVoices();
+    voiceList.some(function(item, index) {
+        var voicebank = voices.filter(function(voice) { return voice.name.indexOf(item) > -1; });
+        if(voicebank.length > 0) {
+            callback(voicebank[0]);
+            return true;
+        }
+    });
+}
 
 // When the user sends a message
 $('#saySomething input').keyup(function(event) {
@@ -56,25 +66,24 @@ $('#saySomething input').keyup(function(event) {
     toMessage.insertBefore($('#endOfMessages'));
     $('#saySomething input').val('');
     
-    
-
     if(hasSpeech) {
         //Stop any current speach
         window.speechSynthesis.cancel();
 
-        getVoice(lang.userLang, function(voice) {
-            //Create the voice        
-            var msg = new SpeechSynthesisUtterance();
-            msg.voice = voice;
-            msg.volume = 1; // 0 to 1
-            msg.rate = 1.3; // 0.1 to 10
-            msg.pitch = 1; //0 to 2
-            msg.text = query;
-            msg.lang = msg.voice.lang;
+    //     getVoice(lang.userLang, function(voice) {
+    //         //Create the voice        
+    //         var msg = new SpeechSynthesisUtterance();
+    //         msg.voice = voice;
+    //         msg.volume = 1; // 0 to 1
+    //         msg.rate = 1.3; // 0.1 to 10
+    //         msg.pitch = 1; //0 to 2
+    //         msg.text = query;
+    //         msg.lang = msg.voice.lang;
 
-            //Speak
-            speechSynthesis.speak(msg);
-        });
+    //         //Speak
+    //         speechSynthesis.speak(msg);
+    //     });
+    
     }
 
     // Process the query
@@ -84,17 +93,6 @@ $('#saySomething input').keyup(function(event) {
     var scroll = $('#chat')[0].scrollHeight - $('#chat')[0].clientHeight;
     $("#chat").animate({scrollTop: scroll}, 200);
 });
-
-function getVoice(voiceList, callback) {
-    var voices = window.speechSynthesis.getVoices();
-    voiceList.some(function(item, index) {
-        var voicebank = voices.filter(function(voice) { return voice.name.indexOf(item) > -1; });
-        if(voicebank.length > 0) {
-            callback(voicebank[0]);
-            return true;
-        }
-    });
-}
 
 function sendMessage(message)
 {
@@ -107,7 +105,7 @@ function sendMessage(message)
             var msg = new SpeechSynthesisUtterance();
             msg.voice = voice;
             msg.volume = 1; // 0 to 1
-            msg.rate = 1.2; // 0.1 to 10
+            msg.rate = 1.1; // 0.1 to 10
             msg.pitch = 1; //0 to 2
             msg.text = message;
             msg.lang = msg.voice.lang;
@@ -147,29 +145,45 @@ function processQuery(q)
     
     match(q, [lang.today].concat([lang.tomorrow].concat(days)), function(index) {
         index %= 7;
-        if(index > -1) {
-            sendMessage(generateResponse(forecast[index]));
-            return true;
-        } else {
+        sendMessage(generateResponse(forecast[index]));
+        return true;
+    }, function() {
+        match(q, ['english', 'français', '日本語'], function(index) {
+            var newlang = 'en';
+            if(index == 0) newlang = 'en';
+            else if(index == 1) newlang = 'fr';
+            else if(index == 2) newlang = 'ja';
+            
+            loadLanguage(newlang, function(event) {
+                lang = event;
+                
+                document.getElementById("messagebox").setAttribute('placeholder', lang.defaultMessage);
+                document.getElementById("temphighlabel").innerHTML = lang.high;
+                document.getElementById("templowlabel").innerHTML = lang.low;
+                
+                sendMessage(lang.affirmation);
+                setStatus();
+            });
+        }, function() {
             sendMessage(randomItem(lang.unknown));
             return false;
-        }
+        });
     });
 }
 
-function match(query, words, callback)
+function match(query, words, success, failure)
 {
     var found = false;
     words.some(function(item, index) {
         var loc = query.toLowerCase().indexOf(item.toLowerCase());
         if(loc > -1) {
-            callback(index);
+            success(index);
             found = true;
             return true;
         }
     });
     if(!found) {
-        callback(-1);
+        failure();
         return false;
     }
 }
@@ -238,7 +252,7 @@ function getForecast()
                 day['moment'] = moment(item['dt']*1000).utc();
                 day['day'] = lang.days[moment(item['dt']*1000).utc().day()];
                 day['icon'] = item['weather'][0]['icon'];
-                day['description'] = lang.weatherstatus[item['weather'][0]['id']];
+                day['description'] = item['weather'][0]['id'];
                 day['high'] = Math.round(item['temp']['max']);
                 day['low'] = Math.round(item['temp']['min']);
 
@@ -354,7 +368,7 @@ function generateResponse(day)
     
     var structure = lang.structure;
     structure = structure.replace('[R0]', randomItem(vars[0])); // Looks like it's
-    structure = structure.replace('[WEATHER]', day['description']); // cloudy
+    structure = structure.replace('[WEATHER]', lang.weatherstatus[day['description']]); // cloudy
     structure = structure.replace('[R1]', randomItem(vars[1])); // in
     structure = structure.replace('[CITY]', city); // Wellington
 

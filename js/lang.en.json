@@ -2,15 +2,24 @@
   "userLang": [
       "Google UK English Male",
       "English",
+      "Daniel",
+      "Karen (Enhanced)",
+      "Karen",
       ""
   ],
   "systemLang": [
       "Google UK English Female",
       "English",
+      "Karen (Enhanced)",
+      "Karen",
+      "Daniel",
       ""
   ],
   
   "defaultMessage": "Ask something...",
+  
+  "affirmation": "Yes.",
+  "deny": "No, sorry...",
   
   "high": "high",
   "low": "low",
@@ -36,7 +45,7 @@
       "Good Evening!"
   ],
   
-  "structure": "[R0] [WEATHER] [R1] [CITY] [DAY]. [R2] [TEMPMAX] [R3] [TEMPMIN]. [SUMMARY]",
+  "structure": "[R0] [WEATHER] [R1] [CITY] [DAY]. [R2] [TEMPMAX][R3] [TEMPMIN]. [SUMMARY]",
   
   "daygenerics": [
       "today",
@@ -62,9 +71,9 @@
         "Peaking at"
     ],
     [
-        "and down to",
+        " and down to",
         ", with a low of",
-        "and as low as"
+        " and as low as"
     ]
   ],
   
