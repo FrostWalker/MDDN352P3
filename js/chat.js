@@ -149,12 +149,13 @@ function processQuery(q)
         sendMessage(generateResponse(forecast[index]));
         return true;
     }, function() {
-        match(q, ['english', 'français', '日本語', 'dutch'], function(index) {
+        match(q, ['english', 'français', '日本語', 'dutch', 'spanish'], function(index) {
             var newlang = 'en';
             if(index == 0) newlang = 'en';
             else if(index == 1) newlang = 'fr';
             else if(index == 2) newlang = 'ja';
-            else if(index == 3) newland = 'nl';
+            else if(index == 3) newlang = 'nl';
+            else if(index == 4) newlang = 'es';
             
             loadLanguage(newlang, function(event) {
                 lang = event;
