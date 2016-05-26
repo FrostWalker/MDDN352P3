@@ -149,7 +149,7 @@ function processQuery(q)
         sendMessage(generateResponse(forecast[index]));
         return true;
     }, function() {
-        match(q, ['english', 'français', '日本語', 'dutch', 'spanish'], function(index) {
+        match(q, ['english', 'français', '日本語', 'dutch', 'español'], function(index) {
             var newlang = 'en';
             if(index == 0) newlang = 'en';
             else if(index == 1) newlang = 'fr';
