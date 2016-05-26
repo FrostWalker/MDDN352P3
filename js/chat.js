@@ -149,11 +149,12 @@ function processQuery(q)
         sendMessage(generateResponse(forecast[index]));
         return true;
     }, function() {
-        match(q, ['english', 'français', '日本語'], function(index) {
+        match(q, ['english', 'français', '日本語', 'dutch'], function(index) {
             var newlang = 'en';
             if(index == 0) newlang = 'en';
             else if(index == 1) newlang = 'fr';
             else if(index == 2) newlang = 'ja';
+            else if(index == 3) newland = 'nl';
             
             loadLanguage(newlang, function(event) {
                 lang = event;
@@ -161,7 +162,7 @@ function processQuery(q)
                 document.getElementById("messagebox").setAttribute('placeholder', lang.defaultMessage);
                 document.getElementById("temphighlabel").innerHTML = lang.high;
                 document.getElementById("templowlabel").innerHTML = lang.low;
-    		document.getElementById("day1Day").innerHTML = lang.days[new Date().getDay()];
+                document.getElementById("day1Day").innerHTML = lang.days[new Date().getDay()];
                 
                 sendMessage(lang.affirmation);
                 setStatus();
