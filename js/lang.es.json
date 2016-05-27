@@ -26,6 +26,11 @@
     
   "today": "hoy",
   "tomorrow": "mañana",
+  "dayafter": "pasado mañana",
+  
+  "nextweek": [
+      "siguiente"
+  ],
   
   "days": [
       "Domingo", 
@@ -51,7 +56,8 @@
       "hoy", 
       "mañana", 
       "pasado mañana", 
-      "el [DAY]"
+      "el [DAY]",
+      "siguiente [DAY]"
   ],
   
   "responses": [ 

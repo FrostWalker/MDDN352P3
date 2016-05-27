@@ -42,7 +42,6 @@ loadLanguage('en', function(event) {
 // Messaging Functions
 // -----------------------------------------------------
 
-
 function getVoice(voiceList, callback) {
     var voices = window.speechSynthesis.getVoices();
     voiceList.some(function(item, index) {
@@ -69,22 +68,7 @@ $('#saySomething input').keyup(function(event) {
     
     if(hasSpeech) {
         //Stop any current speach
-        window.speechSynthesis.cancel();
-
-    //     getVoice(lang.userLang, function(voice) {
-    //         //Create the voice        
-    //         var msg = new SpeechSynthesisUtterance();
-    //         msg.voice = voice;
-    //         msg.volume = 1; // 0 to 1
-    //         msg.rate = 1.3; // 0.1 to 10
-    //         msg.pitch = 1; //0 to 2
-    //         msg.text = query;
-    //         msg.lang = msg.voice.lang;
-
-    //         //Speak
-    //         speechSynthesis.speak(msg);
-    //     });
-    
+        window.speechSynthesis.cancel();    
     }
 
     // Process the query
@@ -129,48 +113,50 @@ function sendMessage(message)
 
 // The grand processing function
 function processQuery(q)
-{
-    // Clean the query
-    q = q.toLowerCase();
-    // q = q.split(' ');
-    // q.forEach(function(item, i) {
-    //     q[i] = item.replace(/[^a-z]/g, "");
-    // });
-    // q.join(" ");
-    
-    var days = lang.days.slice(0);
-    var n = new Date().getDay();
-    for(var i = 0; i < n+2; ++i) {
-        days.push(days.shift());
-    }
-    
-    match(q, [lang.today].concat([lang.tomorrow].concat(days)), function(index) {
-        index %= 7;
-        sendMessage(generateResponse(forecast[index]));
-        return true;
+{    
+    match(q, [lang.today, lang.tomorrow, lang.dayafter], function(index) {
+        sendMessage(generateResponse(index));
     }, function() {
-        match(q, ['english', 'français', '日本語', 'dutch', 'español'], function(index) {
-            var newlang = 'en';
-            if(index == 0) newlang = 'en';
-            else if(index == 1) newlang = 'fr';
-            else if(index == 2) newlang = 'ja';
-            else if(index == 3) newlang = 'nl';
-            else if(index == 4) newlang = 'es';
+        match(q, lang.days, function(index) {
+            var today = new Date().getDay();
+            // index %= 7;
+            if(index < today) {
+                index += 7;
+            }
+            index -= today;
             
-            loadLanguage(newlang, function(event) {
-                lang = event;
-                
-                document.getElementById("messagebox").setAttribute('placeholder', lang.defaultMessage);
-                document.getElementById("temphighlabel").innerHTML = lang.high;
-                document.getElementById("templowlabel").innerHTML = lang.low;
-                document.getElementById("day1Day").innerHTML = lang.days[new Date().getDay()];
-                
-                sendMessage(lang.affirmation);
-                setStatus();
+            match(q, lang.nextweek, function(i) {
+                index += 7;
+                sendMessage(generateResponse(index));
+            }, function() {
+                sendMessage(generateResponse(index));
             });
+            
+            return true;
         }, function() {
-            sendMessage(randomItem(lang.unknown));
-            return false;
+            match(q, ['english', 'français', '日本語', 'dutch', 'español'], function(index) {
+                var newlang = 'en';
+                if(index == 0) newlang = 'en';
+                else if(index == 1) newlang = 'fr';
+                else if(index == 2) newlang = 'ja';
+                else if(index == 3) newlang = 'nl';
+                else if(index == 4) newlang = 'es';
+                
+                loadLanguage(newlang, function(event) {
+                    lang = event;
+                    
+                    document.getElementById("messagebox").setAttribute('placeholder', lang.defaultMessage);
+                    document.getElementById("temphighlabel").innerHTML = lang.high;
+                    document.getElementById("templowlabel").innerHTML = lang.low;
+                    document.getElementById("day1Day").innerHTML = lang.days[new Date().getDay()];
+                    
+                    sendMessage(lang.affirmation);
+                    setStatus();
+                });
+            }, function() {
+                sendMessage(randomItem(lang.unknown));
+                return false;
+            });
         });
     });
 }
@@ -178,14 +164,18 @@ function processQuery(q)
 function match(query, words, success, failure)
 {
     var found = false;
+    
+    query = query.toLowerCase();
+    
     words.some(function(item, index) {
-        var loc = query.toLowerCase().indexOf(item.toLowerCase());
+        var loc = query.indexOf(item.toLowerCase());
         if(loc > -1) {
             success(index);
             found = true;
             return true;
         }
     });
+    
     if(!found) {
         failure();
         return false;
@@ -212,7 +202,7 @@ var skycons; // Weather icon
 function setStatus()
 {
     sendMessage(getGreeting());
-    sendMessage(generateResponse(forecast[0]));
+    sendMessage(generateResponse(0));
 }
 
 // Set the forecast data
@@ -245,20 +235,12 @@ function getForecast()
         type: 'GET',
         success: function (response) {
             var items = response['list'];
-            
-            var today = new Date();
 
             items.some(function(item, index) {
-                // If in the past, ignore it                
-                
                 var newdate = new Date(item['dt']*1000);
-                newdate.setTime(newdate.getTime() + newdate.getTimezoneOffset()*60*1000 );
-
-                if(newdate < today) {
-                    return;
-                }
                 
                 var day = [];
+                day['timestamp'] = newdate;
                 day['day'] = newdate.getDay();
                 day['icon'] = item['weather'][0]['icon'];
                 day['description'] = item['weather'][0]['id'];
@@ -368,20 +350,25 @@ function locationError(e)
     $('#popupBlack').show();
 }
 
-function generateResponse(day)
+function generateResponse(index)
 {
     var vars = lang.responses;
     
-    var status = [];
-    var index = forecast.indexOf(day);
+    var day = forecast[index];
     
     var structure = lang.structure;
     structure = structure.replace('[R0]', randomItem(vars[0])); // Looks like it's
     structure = structure.replace('[WEATHER]', lang.weatherstatus[day['description']]); // cloudy
     structure = structure.replace('[R1]', randomItem(vars[1])); // in
     structure = structure.replace('[CITY]', city); // Wellington
-
-    structure = structure.replace('[DAY]', (index <= 2 ? lang.daygenerics[index] : lang.daygenerics[3].replace('[DAY]', lang.days[day['day']]))); // tomorrow
+    
+    if(index <= 2) { // If today, tomorrow, or the day after
+        structure = structure.replace('[DAY]', lang.daygenerics[index]); // tomorrow
+    } else if(index >= 7) { // If next week
+        structure = structure.replace('[DAY]', lang.daygenerics[4].replace('[DAY]', lang.days[day['day']])); // next saturday
+    } else {
+        structure = structure.replace('[DAY]', lang.daygenerics[3].replace('[DAY]', lang.days[day['day']])); // on wednesday
+    }
     
     structure = structure.replace('[R2]', randomItem(vars[2])); // With a high of
     structure = structure.replace('[TEMPMAX]', day['high']); // 12
@@ -391,31 +378,6 @@ function generateResponse(day)
     structure = structure.replace('[SUMMARY]', randomItem(lang.summary[day['high'] > 22 ? 0 : day['high'] > 17 ? 1 : 2])); // Good day for the beach
 
     return structure;
-    
-    // console.log(structure);
-
-    // status.push(randomItem(vars[0])); // Looks like it's
-    // status.push(day['description']); // cloudy
-    // status.push(randomItem(vars[1])); // in
-    // status.push(city); // Wellington.
-
-    // status.push((index == 0 ? lang.today : index == 1 ? lang.tomorrow : 'on ' + day['day']) + '.');
-    // status.push(randomItem(vars[2])); // With a high of
-    // status.push(day['high']);
-    // status.push(randomItem(vars[3])); // and a low of
-    // status.push(day['low']+'.');
-
-    // if (day['high'] > 22) {
-    //     status.push(randomItem(lang.summary[0])); // Good day for the beach.
-    // } else if (day['high'] > 17) {
-    //     status.push(randomItem(lang.summary[1])); // Could be warmer.
-    // } else {
-    //     status.push(randomItem(lang.summary[2])); // Layer up!
-    // }
-
-    // status = status.join(' ');
-
-    // return status;
 }
 
 // Get a random array entry

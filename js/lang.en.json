@@ -26,6 +26,11 @@
     
   "today": "today",
   "tomorrow": "tomorrow",
+  "dayafter": "day after tomorrow",
+  
+  "nextweek": [
+      "next"
+  ],
   
   "days": [
       "Sunday",
@@ -51,7 +56,8 @@
       "today",
       "tomorrow",
       "the day after tomorrow",
-      "on [DAY]"
+      "on [DAY]",
+      "next [DAY]"
   ],
   
   "responses": [

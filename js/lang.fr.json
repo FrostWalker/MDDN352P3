@@ -26,6 +26,11 @@
     
   "today": "aujourd'hui",
   "tomorrow": "demain",
+  "dayafter": "jour après-demain",
+  
+  "nextweek": [
+      "lundi"
+  ],
   
   "days": [
       "Dimanche",
@@ -51,7 +56,8 @@
       "aujourd'hui",
       "demain",
       "après-demain",
-      "[DAY]"
+      "[DAY]",
+      "lundi [DAY]"
   ],
   
   "responses": [
