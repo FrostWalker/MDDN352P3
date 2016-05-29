@@ -9,173 +9,173 @@
       ""
   ],
   
-  "defaultMessage": "Ask something...",
+  "defaultMessage": "Vraag mij iets",
   
-  "affirmation": "Yes.",
-  "deny": "No, sorry...",
+  "affirmation": "Ja.",
+  "deny": "Nee, sorry",
   
-  "high": "high",
-  "low": "low",
+  "high": "Minimaal",
+  "low": "Maximaal",
     
-  "today": "today",
-  "tomorrow": "tomorrow",
-  "dayafter": "day after tomorrow",
+  "today": "Vandaag",
+  "tomorrow": "Morgen",
+  "dayafter": "Overmorgen",
   
   "nextweek": [
-      "next"
+      "Volgende"
   ],
   
   "days": [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday"
+      "Zondag",
+      "Maandag",
+      "Dinsdag",
+      "Woensdag",
+      "Donderdag",
+      "Vrijdag",
+      "Zaterdag"
   ],
   
   "greetings": [
-      "Hello!",
-      "Good Morning!",
-      "Good Day!",
-      "Good Afternoon!",
-      "Good Evening!"
+      "Hoi!",
+      "Goedenmorgen",
+      "Goedendag!",
+      "Goedenmiddag!",
+      "Goedenavond!"
   ],
   
-  "structure": "[R0] [WEATHER] [R1] [CITY] [DAY]. [R2] [TEMPMAX][R3] [TEMPMIN]. [SUMMARY]",
+  "structure": "[R0] [WEATHER] [R1] [CITY] is [DAY]. [R2] [TEMPMAX] graden [R3] [TEMPMIN] graden. [SUMMARY]",
   
   "daygenerics": [
-      "today",
-      "tomorrow",
-      "the day after tomorrow",
-      "on [DAY]",
-      "next [DAY]"
+      "vandaag",
+      "morgen",
+      "overmorgen",
+      "op [DAY]",
+      "aankomende [DAY]"
   ],
   
   "responses": [
     [
-        "Looks like it will be",
-        "Seems like it's gonna be",
-        "My sources say"
+        "Het ziet ernaar uit dat er",
+        "Het lijkt erop dat er",
+        "Mijn bronnen zeggen dat er"
     ],
     [
         "in",
         "over",
-        "near"
+        "vlakbij"
     ],
     [
-        "We'll have temperatures up to",
-        "A high of",
-        "Peaking at"
+        "We hebben temperaturen die oplopen tot",
+        "We hebben temperaturen die oplopen tot",
+        "We hebben temperaturen die oplopen tot "
     ],
     [
-        " and down to",
-        ", with a low of",
-        " and as low as"
+        " en met een minimum van",
+        " en met een minimum van",
+        " en met een minimum van"
     ]
   ],
   
   "summary": [
     [
-        "Not too bad today, temperature wise.",
-        "Getting a little heat on today.",
-        "I'd consider heading to the beach!"
+        "Het weer is vandaag niet verkeerd.",
+        "Het wordt vandaag lekker warm.",
+        "Een stranddag kan zeker overwogen worden!"
     ],
     [
-        "Not the warmest day, eh.",
-        "Could definitely be warmer.",
-        "Maybe not a day for the beach."
+        "Vandaag is het niet al te warm",
+        "Het is zeker niet warm vandaag.",
+        "Vandaag is misschien niet de beste dag om naar het strand te gaan."
     ],
     [
-        "You'll probably be wanting a jersey out today.",
-        "Definitely take a coat out.",
-        "Layer up!"
+        "Vandaag moet je waarschijnlijk een trui aan.",
+        "Trek zeker een jas aan vandaag.",
+        "Kleed je warm!"
     ]
   ],
   
   "unknown": [
-    "Hmm, I'm not sure how to respond.",
-    "Sorry, I'm pretty dumb at the moment. I'm learning, though!",
-    "Sorry, can't help you there.",
-    "Literally no idea what you just said.",
-    "English please.",
-    "Yeah, you're gonna need to be a bit less vague, cheers."
+    "Hmm, ik weet niet zeker hoe ik hierop moet reageren.",
+    "Sorry, Ik voel me op dit moment erg dom. Ik ben nog aan het leren!",
+    "Sorry, hier kan ik je niet mee helpen.",
+    "Ik heb oprecht geen idee wat je daarmee bedoeld.",
+    "Spreek Engels alsjeblieft.",
+    "Ja, dat mag zeker wel iets specifieker."
   ],
   
   "weatherstatus": {
-    "200": "thunderstorm with light rain",
-    "201": "thunderstorm with rain",
-    "202": "thunderstorm with heavy rain",
-    "210": "light thunderstorm",
-    "211": "thunderstorm",
-    "212": "heavy thunderstorm",
-    "221": "ragged thunderstorm",
-    "230": "thunderstorm with light drizzle",
-    "231": "thunderstorm with drizzle",
-    "232": "thunderstorm with heavy drizzle",
-    "300": "light intensity drizzle",
-    "301": "drizzle",
-    "302": "heavy intensity drizzle",
-    "310": "light intensity drizzle rain",
-    "311": "drizzle rain",
-    "312": "heavy intensity drizzle rain",
-    "313": "shower rain and drizzle",
-    "314": "heavy shower rain and drizzle",
-    "321": "shower drizzle",
-    "500": "light rain",
-    "501": "moderate rain",
-    "502": "heavy intensity rain",
-    "503": "very heavy rain",
-    "504": "extreme rain",
-    "511": "freezing rain",
-    "520": "light intensity shower rain",
-    "521": "shower rain",
-    "522": "heavy intensity shower rain",
-    "531": "ragged shower rain",
-    "600": "light snow",
-    "601": "snow",
-    "602": "heavy snow",
-    "611": "sleet",
-    "612": "shower sleet",
-    "615": "light rain and snow",
-    "616": "rain and snow",
-    "620": "light shower snow",
-    "621": "shower snow",
-    "622": "heavy shower snow",
-    "701": "mist",
-    "711": "smoke",
-    "721": "haze",
-    "731": "sand, dust whirls",
-    "741": "fog",
-    "751": "sand",
-    "761": "dust",
-    "762": "volcanic ash",
-    "771": "squalls",
+    "200": "Onweer met lichte regen",
+    "201": "Onweer met regen",
+    "202": "Onweer met zware regen",
+    "210": "lichte onweersbui",
+    "211": "Onweersbui",
+    "212": "Zware onweersbui",
+    "221": "Onweersbui",
+    "230": "Onweer met miezeren",
+    "231": "Onweer met miezeren",
+    "232": "Onweer met zware motregen",
+    "300": "lichte motregen",
+    "301": "Motregen",
+    "302": "Zware motregen",
+    "310": "Middelzware motregen",
+    "311": "Motregen",
+    "312": "Zware motregen",
+    "313": "Motregen",
+    "314": "Zware motregen",
+    "321": "Druilerig",
+    "500": "lichte regenval",
+    "501": "Gematigde regenval",
+    "502": "Zware regen",
+    "503": "Zeer zware regenval",
+    "504": "Extreem harde regen",
+    "511": "Natte sneeuw",
+    "520": "regen",
+    "521": "Lichte regen",
+    "522": "Motregen",
+    "531": "Motregen",
+    "600": "Licht sneeuw",
+    "601": "sneeuw",
+    "602": "Zware sneeuwval",
+    "611": "Natte sneeuw",
+    "612": "Natte sneeuw",
+    "615": "lichte regen en sneeuw",
+    "616": "Regen een sneeuw",
+    "620": "Lichte sneeuwval",
+    "621": "Lichte sneeuw",
+    "622": "Zware sneeuwval",
+    "701": "Mist",
+    "711": "Rook",
+    "721": "Nevel",
+    "731": "Zandstorm",
+    "741": "Mist",
+    "751": "Zand",
+    "761": "Stof",
+    "762": "Vulkanisch as",
+    "771": "Rukwinden",
     "781": "tornado",
-    "800": "clear sky",
-    "801": "few clouds",
-    "802": "scattered clouds",
-    "803": "broken clouds",
-    "804": "overcast clouds",
+    "800": "Blauwe lucht",
+    "801": "Een paar wolkenvelden",
+    "802": "Verspreide bewolking",
+    "803": "Schapenwolken",
+    "804": "Bewolking",
     "900": "tornado",
-    "901": "tropical storm",
-    "902": "hurricane",
-    "903": "cold",
-    "904": "hot",
-    "905": "windy",
-    "906": "hail",
-    "951": "calm",
-    "952": "light breeze",
-    "953": "gentle breeze",
-    "954": "moderate breeze",
-    "955": "fresh breeze",
-    "956": "strong breeze",
-    "957": "high wind, near gale",
-    "958": "gale",
-    "959": "severe gale",
+    "901": "tropische storm",
+    "902": "Orkaan",
+    "903": "Koud",
+    "904": "Warm",
+    "905": "Winderig",
+    "906": "Hagel",
+    "951": "kalm",
+    "952": "lichte wind",
+    "953": "zachte wind",
+    "954": "middelmatige wind",
+    "955": "frisse wind",
+    "956": "sterke wind",
+    "957": "Vrij sterke wind",
+    "958": "Storm",
+    "959": "Zware storm",
     "960": "storm",
-    "961": "violent storm",
-    "962": "hurricane"
+    "961": "Gevaarlijke storm",
+    "962": "Orkaan"
   }
 }

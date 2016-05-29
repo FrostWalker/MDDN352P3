@@ -134,7 +134,7 @@ function processQuery(q)
             
             return true;
         }, function() {
-            match(q, ['english', 'français', '日本語', 'dutch', 'español'], function(index) {
+            match(q, ['english', 'français', '日本語', 'nederlands', 'español'], function(index) {
                 var newlang = 'en';
                 if(index == 0) newlang = 'en';
                 else if(index == 1) newlang = 'fr';
