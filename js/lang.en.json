@@ -2,6 +2,8 @@
 	"language": "en",
 	"region": "NZ",
 
+	"localName": "English",
+
   "userLang": [
       "en-AU",
       "en-GB",
@@ -18,6 +20,8 @@
   ],
 
   "defaultMessage": "Ask something...",
+
+	"workingMessage": "Working on it...",
 
   "affirmation": "Yes.",
   "deny": "No, sorry...",
@@ -50,7 +54,7 @@
 	],
 
 	"locationsuffix": [
-		"'s'"
+		"'s "
 	],
 
   "greetings": [

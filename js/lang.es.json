@@ -2,6 +2,8 @@
 	"language": "es",
 	"region": "ES",
 
+	"localName": "Español",
+
   "userLang": [
       "es-ES",
       "es-US",
@@ -15,6 +17,8 @@
   ],
 
   "defaultMessage": "Preguntar algo...",
+
+	"workingMessage": "Trabajando en ello...",
 
   "affirmation": "Si.",
   "deny": "No, lo siento...",
@@ -43,11 +47,11 @@
   ],
 
 	"locationprefix": [
-		" in "
+		" en ",
+		" de "
 	],
 
 	"locationsuffix": [
-		"'s'"
 	],
 
   "greetings": [

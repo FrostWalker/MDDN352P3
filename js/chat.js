@@ -39,6 +39,8 @@ function loadLanguage(language, callback) {
         if (xmlhttp.readyState == 4) {
 		        lang = JSON.parse(xmlhttp.responseText);
 
+		        document.getElementById("loadingmessage").innerHTML = lang.workingMessage;
+
 		        document.getElementById("messagebox").setAttribute('placeholder', lang.defaultMessage);
 		        document.getElementById("temphighlabel").innerHTML = lang.high;
 		        document.getElementById("templowlabel").innerHTML = lang.low;
@@ -177,15 +179,11 @@ function processQuery(q) {
 	var language = null;
 
 	match(q, lang.locationprefix, function(index) {
-		var str = q.split(lang.locationprefix[index])[1];
-		var str = str.trim().split(" ")[0];
-		location = str;
+		location = q.split(lang.locationprefix[index])[1].trim().split(" ")[0];
 	});
 
 	match(q, lang.locationsuffix, function(index) {
-		var str = q.split(lang.locationprefix[index])[0];
-		var str = str.trim().split(" ").pop();
-		location = str;
+		location = q.split(lang.locationsuffix[index])[0].trim().split(" ").pop();
 	});
 
 	match(q, [lang.today, lang.tomorrow, lang.dayafter], function(index) {
@@ -236,6 +234,10 @@ function processQuery(q) {
 		});
 	} else if(day >= 0) {
     sendMessage(generateResponse(day));
+	}
+
+	if(location === null && language === null && day < 0) {
+    sendMessage(randomItem(lang.unknown));
 	}
 }
 
@@ -335,6 +337,15 @@ function randomItem(items)
 function setForecast(index) {
 
 	skycons.set("dayIcon", getWeatherIcon(forecast[index]['icon']));
+	console.log(forecast[index]['description']);
+	if(forecast[index]['description'] < 700)
+		document.getElementById('weather_canvas').dataset.frequency = 500;
+	else
+		document.getElementById('weather_canvas').dataset.frequency = 0;
+
+	var event = document.createEvent('Event');
+	event.initEvent('updateWeather', true, true);
+	document.dispatchEvent(event);
 
 	// Set the day
 	$('#dayDay').html(lang.days[forecast[index]['day']]);
@@ -366,7 +377,7 @@ function fetchLocation() {
 
 	var url;
 	var callback;
-	
+
 	if(arguments.length === 2) {
 		url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + arguments[0] + '&language=' + lang.language + '&key=' + googleApiKey;
 		callback = arguments[1];
@@ -410,7 +421,7 @@ function fetchLocation() {
 	});
 }
 
-function fetchWeather(city, success, error) {
+function fetchWeather(city, success, failure) {
 	$('#loading').show();
 
 	url = "//json.ey.nz/api.openweathermap.org/data/2.5/forecast/daily?q=" + city + "&units=metric&cnt=16&appid=" + weatherApiKey;
@@ -425,8 +436,9 @@ function fetchWeather(city, success, error) {
 					var items = response['list'];
 
 					items.some(function(item, index) {
-							var newtime = (item['dt'] + (new Date().getTimezoneOffset()*60)) * 1000
-							var newdate = new Date(newtime);
+							// var newdate = new Date((item['dt'] + (new Date().getTimezoneOffset()*60)) * 1000); //UTC offset
+
+							var newdate = new Date(item['dt']*1000);
 
 							var day = [];
 							day['timestamp'] = newdate;
@@ -452,12 +464,15 @@ function fetchWeather(city, success, error) {
 function updateBackground(lat, long) {
 	$('#loading').show();
 
-	var flickrUrl = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key='+ flickrApiKey + '&lat=' + lat + '&lon=' + long + '&radius=32&geo_context=2&per_page=500&format=json&nojsoncallback=1';
+	var flickrUrl = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key='+ flickrApiKey + '&lat=' + lat + '&lon=' + long + '&radius=32&per_page=500&format=json&nojsoncallback=1';
+	//&geo_context=2
+
 	$.ajax({
 			url: flickrUrl,
 			type: 'GET',
 			success: function (response) {
-					var item = Math.round(Math.random() * response.photos.total);
+					var item = Math.round(Math.random() * response.photos.photo.length);
+
 					var photoData = response.photos.photo[item];
 					var farm = response.photos.photo[item].farm;
 					var server = response.photos.photo[item].server;

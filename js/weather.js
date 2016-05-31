@@ -15,7 +15,7 @@ $(document).ready(function() {
 
         function setup() {
             resize();
-            
+
             frequency($('#weather_canvas').data('frequency'));
             rotate($('#weather_canvas').data('angle'));
             speed($('#weather_canvas').data('speed'));
@@ -117,13 +117,15 @@ $(document).ready(function() {
 
             rotate(angle);
         }
-        
+
         document.addEventListener("updateWeather", function() {
+					console.log('update weather');
+
             resize();
 
-            frequency($('#rainfreq').val());
-            rotate($('#rainangl').val());
-            speed($('#rainspeed').val());
+            frequency(document.getElementById('weather_canvas').dataset.frequency);
+            rotate(document.getElementById('weather_canvas').dataset.angle);
+            speed(document.getElementById('weather_canvas').dataset.speed);
         }, false);
 
         $('#rainfreq').on("input", function() {

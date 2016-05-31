@@ -2,6 +2,8 @@
 	"language": "fr",
 	"region": "FR",
 
+	"localName": "Français",
+
   "userLang": [
       "fr-FR",
       "fr",
@@ -17,6 +19,8 @@
   ],
 
   "defaultMessage": "Demander quelque chose...",
+
+	"workingMessage": "J'y travaille...",
 
   "affirmation": "Oui.",
   "deny": "Non désolé...",
@@ -45,11 +49,12 @@
   ],
 
 	"locationprefix": [
-		" in "
+		" de ",
+		" à "
 	],
 
 	"locationsuffix": [
-		"'s'"
+
 	],
 
   "greetings": [

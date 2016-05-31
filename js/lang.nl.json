@@ -2,6 +2,8 @@
 	"language": "nl",
 	"region": "NL",
 
+	"localName": "Nederlands",
+
   "userLang": [
       "nl-NL",
       "nl",
@@ -13,6 +15,8 @@
   ],
 
   "defaultMessage": "Vraag mij iets",
+
+	"workingMessage": "Ik ben ermee bezig...",
 
   "affirmation": "Ja.",
   "deny": "Nee, sorry",
@@ -45,7 +49,7 @@
 	],
 
 	"locationsuffix": [
-		"'s'"
+		"'s "
 	],
 
   "greetings": [

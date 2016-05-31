@@ -2,6 +2,8 @@
 	"language": "ja",
 	"region": "JP",
 
+	"localName": "日本語",
+
   "userLang": [
       "ja-JP",
       "ja",
@@ -15,6 +17,8 @@
   ],
 
   "defaultMessage": "何かを求めませんか？…",
+
+	"workingMessage": "それに取り組んでいます…",
 
   "affirmation": "はい。",
   "deny": "いいえ、申し訳ありません…",
