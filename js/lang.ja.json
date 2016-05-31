@@ -1,4 +1,7 @@
 {
+	"language": "ja",
+	"region": "JP",
+
   "userLang": [
       "ja-JP",
       "ja",
@@ -10,24 +13,26 @@
       "Kyoko",
       ""
   ],
-  
+
   "defaultMessage": "何かを求めませんか？…",
-  
+
   "affirmation": "はい。",
   "deny": "いいえ、申し訳ありません…",
-  
+
+	"locationerror": "Sorry, I had some trouble finding where you are.",
+
   "high": "高い",
   "low": "低い",
-    
+
   "today": "今日",
   "tomorrow": "明日",
   "dayafter": "明後日",
-  
+
   "nextweek": [
       "次",
       "来週"
   ],
-  
+
   "days": [
       "日曜日",
       "月曜日",
@@ -37,7 +42,16 @@
       "金曜日",
       "土曜日"
   ],
-  
+
+	"locationprefix": [
+
+	],
+
+	"locationsuffix": [
+		"で",
+		"へ"
+	],
+
   "greetings": [
       "こんにちは!",
       "おはようございます!",
@@ -45,9 +59,9 @@
       "こんにちは!",
       "こんばんは!"
   ],
-  
+
   "structure": "[DAY]に[CITY]で[WEATHER][R0]。[TEMPMAX][R2][TEMPMIN][R3]。[SUMMARY]",
-  
+
   "daygenerics": [
       "今日",
       "明日",
@@ -55,7 +69,7 @@
       "[DAY]",
       "来週の[DAY]"
   ],
-  
+
   "responses": [
     [
         "になるように見えます",
@@ -74,7 +88,7 @@
         "度の最小値"
     ]
   ],
-  
+
   "summary": [
     [
         "天気は今日はいない悪すぎます。",
@@ -90,7 +104,7 @@
         "暖かくしてください！"
     ]
   ],
-  
+
   "unknown": [
     "うーん、私は応答するかどうかはわかりません。",
     "申し訳ありませんが、私は現時点ではかなりダムです。でも、私は学んでいます！",
@@ -99,7 +113,7 @@
     "日本語で話してお願い致します。",
     "おかげで少しはあまり曖昧であることにするつもりが必要です。"
   ],
-  
+
   "weatherstatus": {
     "200": "小雨雷雨",
     "201": "雨と雷雨",

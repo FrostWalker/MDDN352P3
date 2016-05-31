@@ -1,4 +1,7 @@
 {
+	"language": "es",
+	"region": "ES",
+
   "userLang": [
       "es-ES",
       "es-US",
@@ -10,174 +13,184 @@
       "Google español de Estados Unidos",
       ""
   ],
-  
+
   "defaultMessage": "Preguntar algo...",
-  
+
   "affirmation": "Si.",
   "deny": "No, lo siento...",
-  
+
+	"locationerror": "Sorry, I had some trouble finding where you are.",
+
   "high": "alta",
   "low": "baja",
-    
+
   "today": "hoy",
   "tomorrow": "mañana",
   "dayafter": "pasado mañana",
-  
+
   "nextweek": [
       "siguiente"
   ],
-  
+
   "days": [
-      "Domingo", 
-      "Lunes", 
-      "Martes", 
-      "Miércoles", 
-      "Jueves", 
-      "Viernes", 
-      "Sábado" 
+      "Domingo",
+      "Lunes",
+      "Martes",
+      "Miércoles",
+      "Jueves",
+      "Viernes",
+      "Sábado"
   ],
-  
+
+	"locationprefix": [
+		" in "
+	],
+
+	"locationsuffix": [
+		"'s'"
+	],
+
   "greetings": [
-      "¡Hola!!", 
-      "¡Buenos días!", 
-      "¡Buen día!", 
-      "¡Buenas tardes!", 
-      "¡Buenas noches!" 
+      "¡Hola!!",
+      "¡Buenos días!",
+      "¡Buen día!",
+      "¡Buenas tardes!",
+      "¡Buenas noches!"
   ],
-  
+
   "structure": "[R0] [WEATHER] [R1] [CITY] [DAY]. [R2] [TEMPMAX][R3] [TEMPMIN]. [SUMMARY]",
-  
+
   "daygenerics": [
-      "hoy", 
-      "mañana", 
-      "pasado mañana", 
+      "hoy",
+      "mañana",
+      "pasado mañana",
       "el [DAY]",
       "siguiente [DAY]"
   ],
-  
-  "responses": [ 
+
+  "responses": [
     [
-        "Parece que va a", 
-        "Da la impresión que habrá", 
+        "Parece que va a",
+        "Da la impresión que habrá",
         "Mis fuentes dicen que"
     ],
     [
-        "en",   
-        "en", 
-        "cerca de" 
+        "en",
+        "en",
+        "cerca de"
     ],
     [
-        "Tendremos temperaturas sobre los", 
-        "Un máximo de", 
+        "Tendremos temperaturas sobre los",
+        "Un máximo de",
         "Alcanzando los"
     ],
     [
-        " y la mínima será de", 
-        " y bajas de", 
-        " alcanzándo los" 
+        " y la mínima será de",
+        " y bajas de",
+        " alcanzándo los"
     ]
   ],
-  
+
   "summary": [
     [
-        "La temperatura es buena, el clima es agradable.", 
-        "La temperatura es agradable, hay un buen clima.", 
-        "Si quieres puedes ir a la playa!"  
+        "La temperatura es buena, el clima es agradable.",
+        "La temperatura es agradable, hay un buen clima.",
+        "Si quieres puedes ir a la playa!"
     ],
     [
-        "El clima esta moderado.", 
-        "Me gustaría que el clima esté mejor.", 
-        "No es un día para ir a la playa." 
+        "El clima esta moderado.",
+        "Me gustaría que el clima esté mejor.",
+        "No es un día para ir a la playa."
     ],
     [
-        "Probablemente vas a necesitar un jersey hoy.", 
-        "Definitivamente tienes que llevar un abrigo.", 
-        "Tu necesitas usar más ropa!" 
+        "Probablemente vas a necesitar un jersey hoy.",
+        "Definitivamente tienes que llevar un abrigo.",
+        "Tu necesitas usar más ropa!"
     ]
   ],
-  
+
   "unknown": [
-    "Mmm... nose como responder.", 
-    "No soy muy inteligente en este momento, pero estoy aprendiendo!", 
-    "Lo siento, no puedo ayudarte.", 
-    "Literalmente no tengo idea que acabas de decir.", 
+    "Mmm... nose como responder.",
+    "No soy muy inteligente en este momento, pero estoy aprendiendo!",
+    "Lo siento, no puedo ayudarte.",
+    "Literalmente no tengo idea que acabas de decir.",
     "Español por favor.",
-    "Sí, vas a necesitar ser mas específico, por favor." 
+    "Sí, vas a necesitar ser mas específico, por favor."
   ],
-  
+
   "weatherstatus": {
     "200": "tormenta con un poco de lluvia",
-    "201": "tormenta con lluvia", 
-    "202": "tormneta con una fuerte lluvia", 
-    "210": "tormenta leve", 
-    "211": "tormenta", 
-    "212": "fuete tormenta", 
-    "221": "tormenta eléctrica", 
-    "230": "tormenta con una ligera llovizna",  
-    "231": "tormenta con llovizna", 
-    "232": "tormenta con lluvia",  
-    "300": "leve llovizna",  
-    "301": "llovizna",  
-    "302": "fuerte llovizna", 
-    "310": "leve llovizna", 
-    "311": "lluvia", 
-    "312": "fuerte lluvia", 
-    "313": "lluvia y llovizna",  
-    "314": "fuerte lluvia y fuerte llovizna", 
-    "321": "llovizna", 
-    "500": "ligera lluvia", 
-    "501": "lluvia moderada", 
-    "502": "fuerte lluvia", 
-    "503": "muy fuerte lluvia", 
-    "504": "lluvia extrema", 
-    "511": "lluvia muy helada", 
-    "520": "leve lluvia", 
-    "521": "lluvia", 
-    "522": "fuerte lluvia", 
-    "531": "lluvia", 
-    "600": "ligera nieve", 
-    "601": "nieve", 
-    "602": "fuerte nieve", 
-    "611": "agua nieve", 
-    "612": "agua nieve", 
-    "615": "leve lluvia y leve nevada", 
+    "201": "tormenta con lluvia",
+    "202": "tormneta con una fuerte lluvia",
+    "210": "tormenta leve",
+    "211": "tormenta",
+    "212": "fuete tormenta",
+    "221": "tormenta eléctrica",
+    "230": "tormenta con una ligera llovizna",
+    "231": "tormenta con llovizna",
+    "232": "tormenta con lluvia",
+    "300": "leve llovizna",
+    "301": "llovizna",
+    "302": "fuerte llovizna",
+    "310": "leve llovizna",
+    "311": "lluvia",
+    "312": "fuerte lluvia",
+    "313": "lluvia y llovizna",
+    "314": "fuerte lluvia y fuerte llovizna",
+    "321": "llovizna",
+    "500": "ligera lluvia",
+    "501": "lluvia moderada",
+    "502": "fuerte lluvia",
+    "503": "muy fuerte lluvia",
+    "504": "lluvia extrema",
+    "511": "lluvia muy helada",
+    "520": "leve lluvia",
+    "521": "lluvia",
+    "522": "fuerte lluvia",
+    "531": "lluvia",
+    "600": "ligera nieve",
+    "601": "nieve",
+    "602": "fuerte nieve",
+    "611": "agua nieve",
+    "612": "agua nieve",
+    "615": "leve lluvia y leve nevada",
     "616": "lluvia y nieve",
-    "620": "nieve ligera", 
-    "621": "nieve", 
-    "622": "fuerte nevada", 
-    "701": "niebla", 
-    "711": "niebla", 
-    "721": "bruma", 
-    "731": "arena, remolinos de polvo",  
-    "741": "niebla", 
+    "620": "nieve ligera",
+    "621": "nieve",
+    "622": "fuerte nevada",
+    "701": "niebla",
+    "711": "niebla",
+    "721": "bruma",
+    "731": "arena, remolinos de polvo",
+    "741": "niebla",
     "751": "arena",
-    "761": "polvo", 
-    "762": "ceniza volcánica", 
-    "771": "chubascos",  
-    "781": "tornado", 
-    "800": "cielo despejado", 
-    "801": "pocas nubes",  
-    "802": "nubes dispersas",  
-    "803": "un poco de nubes", 
-    "804": "nublado", 
-    "900": "tornado", 
+    "761": "polvo",
+    "762": "ceniza volcánica",
+    "771": "chubascos",
+    "781": "tornado",
+    "800": "cielo despejado",
+    "801": "pocas nubes",
+    "802": "nubes dispersas",
+    "803": "un poco de nubes",
+    "804": "nublado",
+    "900": "tornado",
     "901": "tormenta tropical",
-    "902": "huracán", 
-    "903": "frío", 
-    "904": "caliente", 
-    "905": "vientoso", 
-    "906": "granizado", 
-    "951": "calmo",  
-    "952": "brisa ligera",  
-    "953": "brisa suave", 
-    "954": "brisa moderada", 
-    "955": "brisa fresca", 
-    "956": "fuerte brisa", 
-    "957": "fuerte viento casi ventaval", 
-    "958": "vendaval", 
-    "959": "fuerte vendaval", 
-    "960": "tormenta", 
-    "961": "tormenenta violenta",  
-    "962": "Huracán" 
+    "902": "huracán",
+    "903": "frío",
+    "904": "caliente",
+    "905": "vientoso",
+    "906": "granizado",
+    "951": "calmo",
+    "952": "brisa ligera",
+    "953": "brisa suave",
+    "954": "brisa moderada",
+    "955": "brisa fresca",
+    "956": "fuerte brisa",
+    "957": "fuerte viento casi ventaval",
+    "958": "vendaval",
+    "959": "fuerte vendaval",
+    "960": "tormenta",
+    "961": "tormenenta violenta",
+    "962": "Huracán"
   }
 }

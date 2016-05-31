@@ -1,4 +1,7 @@
 {
+	"language": "fr",
+	"region": "FR",
+
   "userLang": [
       "fr-FR",
       "fr",
@@ -12,23 +15,25 @@
       "Thomas",
       ""
   ],
-  
+
   "defaultMessage": "Demander quelque chose...",
-  
+
   "affirmation": "Oui.",
   "deny": "Non désolé...",
-  
+
+	"locationerror": "Sorry, I had some trouble finding where you are.",
+
   "high": "haute",
   "low": "faible",
-    
+
   "today": "aujourd'hui",
   "tomorrow": "demain",
   "dayafter": "jour après-demain",
-  
+
   "nextweek": [
       "lundi"
   ],
-  
+
   "days": [
       "Dimanche",
       "Lundi",
@@ -38,7 +43,15 @@
       "Vendredi",
       "Samedi"
   ],
-  
+
+	"locationprefix": [
+		" in "
+	],
+
+	"locationsuffix": [
+		"'s'"
+	],
+
   "greetings": [
       "Bonjour!",
       "Bonjour!",
@@ -46,9 +59,9 @@
       "Bonne Après-midi!",
       "Bonsoir!"
   ],
-  
+
   "structure": "[R0] [WEATHER] [R1] [CITY] [DAY]. [R2] [TEMPMAX][R3] [TEMPMIN]. [SUMMARY]",
-  
+
   "daygenerics": [
       "aujourd'hui",
       "demain",
@@ -56,7 +69,7 @@
       "[DAY]",
       "lundi [DAY]"
   ],
-  
+
   "responses": [
     [
         "On dirait qu'il sera",
@@ -81,7 +94,7 @@
         " et aussi bas que"
     ]
   ],
-  
+
   "summary": [
     [
         "La température est pas trop mal aujourd'hui.",
@@ -99,7 +112,7 @@
         "Couche-toi!"
     ]
   ],
-  
+
   "unknown": [
     "Hmm, je ne suis pas sûr de savoir comment réagir.",
     "Désolé, je suis assez stupide pour le moment. J'apprends, si!",
@@ -108,7 +121,7 @@
     "Parlez-vous français?",
     "Ouais, vous allez devoir être un peu moins vague, merci."
   ],
-  
+
   "weatherstatus": {
     "200": "orage avec pluie",
     "201": "orage avec de la pluie",

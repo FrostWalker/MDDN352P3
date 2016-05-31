@@ -8,7 +8,7 @@
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <title>Weather Lad - Your Intelligent Weather Companion</title>
 
-		<!-- iOS Homescreen -->
+        <!-- iOS Homescreen -->
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-title" content="Weather Lad">
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -18,27 +18,27 @@
 
         <!-- Favicon -->
         <link rel="icon" href="images/favicon.png">
-        
-        <!-- Style -->
-        <link rel="stylesheet" href="css/style.css">
-        
+
         <!-- Bootstrap -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-        
+
+				<!-- Style -->
+				<link rel="stylesheet" href="css/style.css">
+
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-                
+
         <!-- Bootstrap JS -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-        
+
         <!-- Google Fonts -->
         <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Montserrat:700,400' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-        
+
         <!-- Font Awesome -->
         <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css' rel="stylesheet" type="text/css">
-        
+
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -51,42 +51,46 @@
         <div id="background_container">
             <div id="background"></div>
         </div>
-        
+
         <canvas width="1" height="1" id="weather_canvas" data-weather="storm" data-frequency="500" data-angle="90" data-speed="100"></canvas>
-        
+
         <div id="topbox"></div>
-        
+
         <div class="day">
             <div class="container">
                 <div class="col-xs-5">
                     <canvas id="dayIcon" width="130px" height="130px"></canvas>
                 </div>
                 <div class="col-xs-7">
-                    <span id="day1Day" class="dayOfWeek">Day</span>
+                    <span id="dayDay" class="dayOfWeek">Day</span>
                     <div class="row">
                         <div class="col-xs-6">
-                            <span id="day1High" class="high">H</span>
+                            <span id="dayHigh" class="high">H</span>
                             <small id="temphighlabel" class="tempLabel">HIGH</small>
                         </div>
                         <div class="col-xs-6">
-                            <span id="day1Low" class="low">L</span>
+                            <span id="dayLow" class="low">L</span>
                             <small id="templowlabel" class="tempLabel">LOW</small>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        
+
         <div id="chat">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-8 col-sm-offset-2">
                         <div id="endOfMessages"></div>
+												<div class="speech from" id="loading">
+													<i class="fa fa-spinner fa-pulse fa-3x fa-fw loading-icon"></i>
+													Working on it...
+												</div>
                     </div>
                 </div>
             </div>
         </div>
-        
+
         <div id="input">
             <div class="row">
                 <div class="col-sm-8 col-sm-offset-2">
@@ -99,20 +103,9 @@
                 </div>
             </div>
         </div>
-        
-        <div id="popupWeather" class="popup">
-            <img src="images/gifs/cloud_rain.gif">
-            Oops! There was an error while I was trying to fetch the latest weather data.
-            I'll try again in a minute, but maybe check your internet connection.
-        </div>
-        <div id="popupLoading" class="popup">
-            <i class="fa fa-spinner fa-pulse fa-3x fa-fw loading-icon"></i>
-            Loading location and weather data...
-        </div>
-        <div id="popupBlack"></div>
-        
+
         <script type="text/javascript" src="js/chat.js"></script>
-        
+
         <script type="text/javascript" src="js/weather.js"></script>
 
         <!-- Animated weather icons -->
@@ -126,7 +119,7 @@
             // start animation!
             skycons.play();
         </script>
-        
+
     </body>
 
 </html>

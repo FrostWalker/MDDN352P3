@@ -1,4 +1,7 @@
 {
+	"language": "en",
+	"region": "NZ",
+
   "userLang": [
       "en-AU",
       "en-GB",
@@ -13,23 +16,25 @@
       "Daniel",
       ""
   ],
-  
+
   "defaultMessage": "Ask something...",
-  
+
   "affirmation": "Yes.",
   "deny": "No, sorry...",
-  
+
+	"locationerror": "Sorry, I had some trouble finding where you are.",
+
   "high": "high",
   "low": "low",
-    
+
   "today": "today",
   "tomorrow": "tomorrow",
   "dayafter": "day after tomorrow",
-  
+
   "nextweek": [
       "next"
   ],
-  
+
   "days": [
       "Sunday",
       "Monday",
@@ -39,7 +44,15 @@
       "Friday",
       "Saturday"
   ],
-  
+
+	"locationprefix": [
+		" in "
+	],
+
+	"locationsuffix": [
+		"'s'"
+	],
+
   "greetings": [
       "Hello!",
       "Good Morning!",
@@ -47,9 +60,9 @@
       "Good Afternoon!",
       "Good Evening!"
   ],
-  
+
   "structure": "[R0] [WEATHER] [R1] [CITY] [DAY]. [R2] [TEMPMAX][R3] [TEMPMIN]. [SUMMARY]",
-  
+
   "daygenerics": [
       "today",
       "tomorrow",
@@ -57,7 +70,7 @@
       "on [DAY]",
       "next [DAY]"
   ],
-  
+
   "responses": [
     [
         "Looks like it will be",
@@ -80,7 +93,7 @@
         " and as low as"
     ]
   ],
-  
+
   "summary": [
     [
         "Not too bad today, temperature wise.",
@@ -93,12 +106,12 @@
         "Maybe not a day for the beach."
     ],
     [
-        "You'll probably be wanting a jersey out today.",
+        "You'll probably be wanting a jersey out.",
         "Definitely take a coat out.",
         "Layer up!"
     ]
   ],
-  
+
   "unknown": [
     "Hmm, I'm not sure how to respond.",
     "Sorry, I'm pretty dumb at the moment. I'm learning, though!",
@@ -107,7 +120,7 @@
     "English please.",
     "Yeah, you're gonna need to be a bit less vague, cheers."
   ],
-  
+
   "weatherstatus": {
     "200": "thunderstorm with light rain",
     "201": "thunderstorm with rain",

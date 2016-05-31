@@ -1,4 +1,7 @@
 {
+	"language": "nl",
+	"region": "NL",
+
   "userLang": [
       "nl-NL",
       "nl",
@@ -8,23 +11,25 @@
       "Google Nederlands",
       ""
   ],
-  
+
   "defaultMessage": "Vraag mij iets",
-  
+
   "affirmation": "Ja.",
   "deny": "Nee, sorry",
-  
+
+	"locationerror": "Sorry, I had some trouble finding where you are.",
+
   "high": "Minimaal",
   "low": "Maximaal",
-    
+
   "today": "Vandaag",
   "tomorrow": "Morgen",
   "dayafter": "Overmorgen",
-  
+
   "nextweek": [
       "Volgende"
   ],
-  
+
   "days": [
       "Zondag",
       "Maandag",
@@ -34,7 +39,15 @@
       "Vrijdag",
       "Zaterdag"
   ],
-  
+
+	"locationprefix": [
+		" in "
+	],
+
+	"locationsuffix": [
+		"'s'"
+	],
+
   "greetings": [
       "Hoi!",
       "Goedenmorgen",
@@ -42,9 +55,9 @@
       "Goedenmiddag!",
       "Goedenavond!"
   ],
-  
+
   "structure": "[R0] [WEATHER] [R1] [CITY] is [DAY]. [R2] [TEMPMAX] graden [R3] [TEMPMIN] graden. [SUMMARY]",
-  
+
   "daygenerics": [
       "vandaag",
       "morgen",
@@ -52,7 +65,7 @@
       "op [DAY]",
       "aankomende [DAY]"
   ],
-  
+
   "responses": [
     [
         "Het ziet ernaar uit dat er",
@@ -75,7 +88,7 @@
         " en met een minimum van"
     ]
   ],
-  
+
   "summary": [
     [
         "Het weer is vandaag niet verkeerd.",
@@ -93,7 +106,7 @@
         "Kleed je warm!"
     ]
   ],
-  
+
   "unknown": [
     "Hmm, ik weet niet zeker hoe ik hierop moet reageren.",
     "Sorry, Ik voel me op dit moment erg dom. Ik ben nog aan het leren!",
@@ -102,7 +115,7 @@
     "Spreek Engels alsjeblieft.",
     "Ja, dat mag zeker wel iets specifieker."
   ],
-  
+
   "weatherstatus": {
     "200": "Onweer met lichte regen",
     "201": "Onweer met regen",
