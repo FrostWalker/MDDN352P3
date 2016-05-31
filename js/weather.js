@@ -119,8 +119,6 @@ $(document).ready(function() {
         }
 
         document.addEventListener("updateWeather", function() {
-					console.log('update weather');
-
             resize();
 
             frequency(document.getElementById('weather_canvas').dataset.frequency);

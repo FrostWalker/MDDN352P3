@@ -337,7 +337,7 @@ function randomItem(items)
 function setForecast(index) {
 
 	skycons.set("dayIcon", getWeatherIcon(forecast[index]['icon']));
-	console.log(forecast[index]['description']);
+
 	if(forecast[index]['description'] < 700)
 		document.getElementById('weather_canvas').dataset.frequency = 500;
 	else
@@ -361,6 +361,8 @@ function updateData(event, callback) {
 	country = event.country;
 	lat = event.lat;
 	long = event.long;
+
+	document.getElementById('dayCity').innerHTML = city;
 
 	updateBackground(event.lat, event.long);
 
@@ -395,17 +397,20 @@ function fetchLocation() {
 					var addressComponents = response['results'][0]['address_components'];
 
 					addressComponents.forEach(function(item, index) {
+
+							var types = item['types'];
+
 							// Get the city
-							if (item['types'][0] == 'locality') {
+							if ($.inArray('locality', types) > -1) {
 									city = item['long_name'];
 							}
 
-							if (item['types'][0] == 'administrative_area_level_1' && city === null) {
+							if ($.inArray('administrative_area_level_1', types) > -1 && city === null) {
 									city = item['long_name'];
 							}
 
 							// Get the country
-							if (item['types'][0] == 'country') {
+							if ($.inArray('country', types) > -1) {
 									country = item['short_name'];
 							}
 					});

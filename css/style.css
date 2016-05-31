@@ -24,9 +24,9 @@ body {
     height: calc(100vh + 12px);
 
     filter: url(images/blur.svg#blur);
-	-webkit-filter: blur(2px);
-	filter: blur(2px);
-	filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius='2');
+		-webkit-filter: blur(4px);
+		filter: blur(4px);
+		filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius='4');
 
     z-index: -20;
 }
@@ -58,7 +58,7 @@ div {
 
 /* Header section */
 .day {
-    height: 170px;
+    height: 160px;
     font-size: 12px;
     position: fixed;
     top: 0;
@@ -77,36 +77,44 @@ div {
     max-width: 100%;
 }
 
+.currentCity {
+    display: block;
+		margin-top: -10px;
+		margin-left: -5px;
+    font-size: 2.5em;
+    font-family: 'Montserrat', sans-serif;
+}
+
 .dayOfWeek {
     display: block;
-    margin-bottom: -20px;
-    font-size: 3em;
+		margin-top: -5px;
+    margin-bottom: -10px;
+    font-size: 1.5em;
     font-family: 'Montserrat', sans-serif;
 }
 
 .high, .low {
-    font-size: 5em; /* 5em */
+    font-size: 4em; /* 5em */
     font-family: 'Montserrat', sans-serif;
 }
 
 .tempLabel {
     display: block;
     margin-top: -15px;
-    font-size: 2em;
+    font-size: 1.5em;
     text-transform: uppercase;
 }
 
 /* Features (coloured background) */
 #chat {
     position: fixed;
-    top: 170px;
+    top: 160px;
     left: 0;
     right: 0;
-    bottom: 0;
+    bottom: 56px;
     overflow: scroll;
     z-index: 1;
     padding-top: 20px;
-    margin-bottom: 60px;
     overflow: scroll;
 }
 #chat .container {
@@ -163,9 +171,11 @@ div {
     bottom: 0;
     background: #ffffff;
     box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.5);
+		border-top: 1px solid rgba(0, 0, 0, 0.25);
     height: 56px;
     width: 100wv!important;
     padding: 0 10px;
+		z-index: 9001!important;
 }
 /* Say something */
 #saySomething {
