@@ -23,8 +23,8 @@
 
 	"locationerror": "Sorry, I had some trouble finding where you are.",
 
-  "high": "Minimaal",
-  "low": "Maximaal",
+  "high": "Maximaal",
+  "low": "Minimaal",
 
   "today": "Vandaag",
   "tomorrow": "Morgen",
